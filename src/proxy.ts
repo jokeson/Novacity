@@ -15,7 +15,7 @@ const buildRedirect = (req: NextRequest, pathname: string): NextResponse => {
   return NextResponse.redirect(loginUrl);
 };
 
-export const middleware = async (req: NextRequest): Promise<NextResponse> => {
+export const proxy = async (req: NextRequest): Promise<NextResponse> => {
   const token = req.cookies.get(SESSION_COOKIE_NAME)?.value;
   const session = token ? await verifySessionToken(token) : null;
 
