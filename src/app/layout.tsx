@@ -1,0 +1,53 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { getAppBaseUrl } from "@/lib/app-url";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(getAppBaseUrl()),
+  title: {
+    default: "Novacity",
+    template: "%s | Novacity",
+  },
+  description: "Modern real estate marketplace platform",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Novacity",
+    description: "Modern real estate marketplace platform",
+    siteName: "Novacity",
+    type: "website",
+    locale: "en_US",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Novacity",
+    description: "Modern real estate marketplace platform",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={cn("h-full", "antialiased", inter.variable, "font-sans")}
+    >
+      <body className="min-h-full bg-background font-sans text-foreground flex flex-col">
+        {children}
+      </body>
+    </html>
+  );
+}

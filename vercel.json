@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "functions": {
+    "src/app/api/listings/images/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/api/admin/home-hero-image/route.ts": {
+      "maxDuration": 30
+    },
+    "src/app/api/verification/document/route.ts": {
+      "maxDuration": 30
+    }
+  }
+}

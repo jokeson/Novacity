@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Novacity
 
-## Getting Started
+Modern real estate marketplace (Next.js 16, MongoDB, Cloudinary). See `context/` for product and architecture docs.
 
-First, run the development server:
+## Local development
 
 ```bash
+cp .env.example .env.local
+# Fill MONGODB_URI, AUTH_SECRET, and Cloudinary (optional locally if using public/uploads)
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) with [Inter](https://fonts.google.com/specimen/Inter) as the UI typeface (see `context/UI-Context.md`).
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build (run before deploy) |
+| `npm run lint` | ESLint |
+| `npm run verify:deploy` | Check env vars before Vercel deploy |
+| `npm run seed:admin` | Create admin user (local only, see `.env.example`) |
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Push the repo and import it in [Vercel](https://vercel.com/new).
+2. Add environment variables from [`.env.example`](.env.example) (see **[docs/DEPLOY-VERCEL.md](docs/DEPLOY-VERCEL.md)**).
+3. Run `npm run verify:deploy` locally, then `npm run build`.
+4. Deploy. Set `NEXT_PUBLIC_APP_URL` to your production domain and redeploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Required on Vercel:** `MONGODB_URI`, `AUTH_SECRET`, Cloudinary credentials. **Recommended:** `NEXT_PUBLIC_APP_URL`, Resend for emails.
+
+Uploads use Cloudinary on Vercel (local disk under `public/uploads/` is dev-only).
+
+## Learn more
+
+- [Next.js documentation](https://nextjs.org/docs)
+- [Vercel deployment](https://nextjs.org/docs/app/building-your-application/deploying)
