@@ -91,6 +91,8 @@ Last worked on:
 - **Navbar states dropdown:** Built from real listing data; deduped names; links to state pages
 - **Contact page:** `/contact` with server validation, rate limiting, success/error states
 - **Novacity page:** `/novacity` marketing content
+- **Locations map:** `/locations` — Leaflet + OpenStreetMap; navbar **Locations** link; pins for marketing listings in Juba with hover tooltips (listing photo like homepage card, type, price, title); optional `latitude` / `longitude` on `Property`
+- **State maps:** `/states/[slug]` — same map UX per state (approximate in-state pins until exact address/coords); States nav + homepage state cards link here; **Browse listings** → marketplace state filter
 - **Public footer:** `PublicFooter` on homepage
 - Removed demo `sample-listings` data from homepage
 - Search modal from navbar; filters in URL query string (SEO-friendly)

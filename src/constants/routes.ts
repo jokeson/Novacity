@@ -20,6 +20,7 @@ export const ROUTES = {
   adminHomeHero: "/admin/home-hero",
   adminOwnerVerifications: "/admin/owner-verifications",
   novacity: "/novacity",
+  locations: "/locations",
   contact: "/contact",
   listings: "/properties",
   properties: "/properties",

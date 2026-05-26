@@ -173,3 +173,112 @@ body {
     @apply rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md;
   }
 }
+
+/* Locations map — Leaflet pins & hover tooltips */
+.novacity-map-marker-icon {
+  background: transparent;
+  border: none;
+}
+
+.novacity-map-marker-icon__dot {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  border-radius: 9999px;
+  background: var(--gold);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--gold) 45%, transparent),
+    0 4px 12px rgb(15 23 42 / 28%);
+  transition: transform 0.2s ease;
+}
+
+.leaflet-marker-icon:hover .novacity-map-marker-icon__dot {
+  transform: scale(1.12);
+}
+
+/* Hover property card — rendered above the map canvas (not clipped by Leaflet). */
+.novacity-map-hover-card {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  width: 14rem;
+  max-width: calc(100% - 1.5rem);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold) 35%, var(--border));
+  border-radius: 0.625rem;
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 12px 28px rgb(15 23 42 / 16%);
+  pointer-events: auto;
+}
+
+.novacity-map-hover-card__media {
+  height: 6.5rem;
+  width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--muted) 80%, transparent);
+}
+
+.novacity-map-hover-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.novacity-map-hover-card__body {
+  padding: 0.45rem 0.6rem 0.55rem;
+}
+
+.novacity-map-hover-card__type {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.novacity-map-hover-card__title {
+  margin-top: 0.1rem;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--foreground);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.novacity-map-hover-card__location {
+  margin-top: 0.15rem;
+  overflow: hidden;
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.novacity-map-hover-card__price {
+  margin-top: 0.2rem;
+}
+
+.novacity-map-hover-card__link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.novacity-map-hover-card__link:hover {
+  color: color-mix(in srgb, var(--gold) 82%, var(--foreground));
+}

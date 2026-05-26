@@ -58,7 +58,7 @@ export const NavbarClient = ({
         listingStates={listingStates}
       />
       <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-2 md:flex">
           {isAuthenticated ? (
             <>
               <AuthenticatedNavbarActions
@@ -82,7 +82,7 @@ export const NavbarClient = ({
             </>
           )}
         </div>
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 md:hidden">
           {searchButton}
         </div>
       </div>

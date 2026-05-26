@@ -22,6 +22,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${base}${ROUTES.locations}`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.85,
+    },
+    {
       url: `${base}${ROUTES.novacity}`,
       lastModified: now,
       changeFrequency: "monthly",

@@ -48,7 +48,7 @@ export const Navbar = async () => {
         <div className="flex h-16 items-center justify-between gap-4 lg:h-[4.25rem]">
           <div className="flex min-w-0 flex-1 items-center gap-8">
             <div className="flex items-center gap-2 lg:gap-8">
-              <div className="lg:hidden">
+              <div className="md:hidden">
                 <MobileNavbar
                   isAuthenticated={Boolean(session)}
                   profile={session ? profile : null}
@@ -68,7 +68,7 @@ export const Navbar = async () => {
                 </span>
               </Link>
             </div>
-            <DesktopNavLinks listingStates={listingStates} className="hidden lg:flex" />
+            <DesktopNavLinks listingStates={listingStates} className="hidden md:flex" />
           </div>
           <NavbarClient
             isAuthenticated={Boolean(session)}

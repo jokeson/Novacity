@@ -67,6 +67,10 @@ const propertySchema = new mongoose.Schema(
     state: { type: String, trim: true, default: "", index: true },
     location: { type: String, trim: true, default: "" },
     address: { type: String, trim: true, default: "" },
+    /** Map pin — WGS84 latitude (Juba and wider South Sudan). */
+    latitude: { type: Number, default: null },
+    /** Map pin — WGS84 longitude. */
+    longitude: { type: Number, default: null },
     /** Lister contact phone shown on the public property details page. */
     phone: { type: String, trim: true, default: "" },
     images: { type: [String], default: [] },

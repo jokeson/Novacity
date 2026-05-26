@@ -10,6 +10,7 @@ export type NavItem = {
 export const mainNavCoreItems: NavItem[] = [
   { label: "Home", href: ROUTES.home },
   { label: "Listings", href: ROUTES.listings },
+  { label: "Locations", href: ROUTES.locations },
 ];
 
 /** Static links after States — about + contact. */
