@@ -86,7 +86,7 @@ Last worked on:
 - **Dynamic overlay hero:** Full-cover `next/image` background with overlaid copy/CTAs and navy scrim; admin-managed at `/admin/home-hero`; safe defaults when data missing; hero **Search properties** opens `AdvancedSearchModal` (same as navbar)
 - **Listing rails:** Featured (ownership, max 4 cards + Learn more → marketplace `?featured=1`), for sale (**2** recent for-sale + hardcoded card images), for rent, apartments, commercial, latest — live DB data via `HomeListingRail`; Suspense fallbacks; empty/error states; `PropertyCard` reuse
 - **Section bands (May 2026):** Unique homepage band per section (`homeSectionBands.ts` + `HomeSectionBandShell`) — gold, white, linen, navy, stone, elevated, compass, heritage; subtle decor overlays via brand tokens only (navy, gold, muted)
-- **Card surfaces:** Light gray `bg-card` on white/elevated bands; white `bg-background` on other tinted bands; gold gradient on featured, apartments, and commercial cards — `homeCardSurfaces.ts` + `--card` token (`#F8FAFC`)
+- **Card surfaces:** Light gray `bg-card` on white/elevated bands; white `bg-background` on tinted bands — `homeCardSurfaces.ts` + `--card` token (`#F8FAFC`)
 - **States section:** Top five states by listing count; `#states` placement; white cards on muted band; links to `/states/[slug]`
 - **Navbar states dropdown:** Built from real listing data; deduped names; links to state pages
 - **Contact page:** `/contact` with server validation, rate limiting, success/error states
