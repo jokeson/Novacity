@@ -22,6 +22,7 @@ import type {
   PropertyType,
 } from "@/types/property";
 import { uiTypography } from "@/lib/uiContext";
+import { uiPageSectionY } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 export type PropertyDetailsPageViewProps = {
@@ -76,8 +77,8 @@ export const PropertyDetailsPageView = ({
   );
 
   return (
-    <Container className="py-10">
-      <nav className="mb-6" aria-label="Listing navigation">
+    <Container className={cn(uiPageSectionY, "min-w-0")}>
+      <nav className="mb-4 sm:mb-6" aria-label="Listing navigation">
         <Link
           href={catalogBackHref}
           className={cn(
@@ -94,8 +95,8 @@ export const PropertyDetailsPageView = ({
         </Link>
       </nav>
 
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]">
-        <Card className="gap-0 overflow-hidden py-0">
+      <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,17.5rem)] lg:gap-10 xl:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]">
+        <Card className="min-w-0 gap-0 overflow-hidden py-0">
           <PropertyGallery
             title={property.title}
             images={property.images}
@@ -109,7 +110,7 @@ export const PropertyDetailsPageView = ({
             }
           />
 
-          <CardContent className="space-y-6 px-6 py-8 md:px-10">
+          <CardContent className="space-y-5 px-4 py-6 sm:space-y-6 sm:px-6 sm:py-8 md:px-10">
             <header className="space-y-3">
               {/* Mobile: stacked title card + price tile */}
               <div className="flex flex-col gap-3 sm:hidden">
@@ -168,7 +169,7 @@ export const PropertyDetailsPageView = ({
             </section>
           </CardContent>
 
-          <CardFooter className="flex-col gap-4 border-t-0 bg-primary px-6 py-5 sm:flex-row sm:items-center sm:justify-between md:px-10">
+          <CardFooter className="flex-col gap-4 border-t-0 bg-primary px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-5 md:px-10">
             <p className="font-heading text-gold text-base font-semibold tracking-tight md:text-lg">
               {ownershipLabel}
             </p>

@@ -4,6 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { buttonVariants } from "@/components/ui/button";
+import {
+  navbarActionSizeClass,
+  navbarActionStackedSizeClass,
+  navbarGoldCtaClass,
+  navbarOutlineDefaultClass,
+  navbarOutlineOnPrimaryClass,
+} from "@/components/shared/navigation/navbarActionStyles";
 import { ROUTES } from "@/constants/routes";
 import { cn } from "@/lib/utils";
 import { SignOutButton } from "@/features/auth/components/SignOutButton";
@@ -27,10 +34,11 @@ export const AuthenticatedNavbarActions = ({
 }: AuthenticatedNavbarActionsProps) => {
   const isOnPrimary = tone === "on-primary";
   const outlineBtnClass = isOnPrimary
-    ? "cursor-pointer justify-center border-primary-foreground/30 bg-transparent text-primary-foreground shadow-sm transition-all duration-300 hover:border-gold/45 hover:bg-primary-foreground/10 hover:text-gold hover:shadow-md"
-    : "cursor-pointer justify-center border-border shadow-sm transition-all duration-300 hover:shadow-md";
+    ? navbarOutlineOnPrimaryClass
+    : navbarOutlineDefaultClass;
   const pathname = usePathname();
   const sizeCls = stacked ? "default" : "sm";
+  const sizeClass = stacked ? navbarActionStackedSizeClass : navbarActionSizeClass;
   const hideDashboard = pathname.startsWith(ROUTES.dashboard);
   const listPropertyHref = canCreateListings
     ? ROUTES.dashboardListingsCreate
@@ -51,7 +59,7 @@ export const AuthenticatedNavbarActions = ({
           className={buttonVariants({
             variant: "outline",
             size: sizeCls,
-            className: outlineBtnClass,
+            className: cn(outlineBtnClass, sizeClass, stacked && "w-full"),
           })}
         >
           Dashboard
@@ -62,7 +70,7 @@ export const AuthenticatedNavbarActions = ({
         className={buttonVariants({
           variant: "gold",
           size: sizeCls,
-          className: "cursor-pointer justify-center",
+          className: cn(navbarGoldCtaClass, sizeClass, stacked && "w-full"),
         })}
         aria-label={
           canCreateListings
@@ -79,7 +87,7 @@ export const AuthenticatedNavbarActions = ({
           formClassName={stacked ? "w-full" : undefined}
           className={cn(
             outlineBtnClass,
-            "rounded-xl",
+            sizeClass,
             stacked && "w-full justify-center",
           )}
         />

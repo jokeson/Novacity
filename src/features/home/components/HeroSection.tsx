@@ -50,7 +50,7 @@ export const HeroSection = ({
 
   return (
     <section
-      className="relative min-h-[28rem] overflow-hidden border-b border-border md:min-h-[32rem] lg:min-h-[40rem]"
+      className="relative min-h-[22rem] overflow-hidden border-b border-border sm:min-h-[26rem] md:min-h-[30rem] lg:min-h-[36rem] xl:min-h-[40rem]"
       aria-labelledby="hero-heading"
     >
       <Image
@@ -70,7 +70,7 @@ export const HeroSection = ({
         aria-hidden
       />
 
-      <Container className="relative z-10 grid min-h-[28rem] grid-rows-[minmax(0,1fr)_auto] items-stretch gap-5 py-14 sm:gap-6 sm:py-16 md:min-h-[32rem] md:gap-8 md:py-20 lg:min-h-[40rem] lg:gap-10 lg:py-24">
+      <Container className="relative z-10 grid min-h-[22rem] grid-rows-[minmax(0,1fr)_auto] items-stretch gap-4 py-10 sm:min-h-[26rem] sm:gap-5 sm:py-12 md:min-h-[30rem] md:gap-6 md:py-16 lg:min-h-[36rem] lg:gap-8 lg:py-20 xl:min-h-[40rem] xl:gap-10 xl:py-24">
         <motion.div
           className="flex w-full max-w-3xl flex-col justify-center gap-6 self-center sm:gap-8"
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}

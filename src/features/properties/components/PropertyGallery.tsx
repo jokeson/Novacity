@@ -48,7 +48,7 @@ export const PropertyGallery = ({
     }
     return (
       <div
-        className="border-border bg-muted/40 text-muted-foreground flex aspect-[4/3] items-center justify-center rounded-2xl border text-sm"
+        className="border-border bg-muted/40 text-muted-foreground flex aspect-[4/3] items-center justify-center rounded-2xl border-2 text-sm shadow-none"
         role="img"
         aria-label={`${title} — no photos yet`}
       >
@@ -66,10 +66,10 @@ export const PropertyGallery = ({
             type="button"
             onClick={() => setActive(index)}
             className={cn(
-              "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg ring-2 transition-all",
+              "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border-2 transition-all shadow-none",
               index === active
-                ? "ring-gold"
-                : "ring-transparent hover:ring-border",
+                ? "border-gold"
+                : "border-transparent hover:border-border",
             )}
             aria-label={`Show image ${index + 1}`}
             aria-pressed={index === active}

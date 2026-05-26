@@ -7,6 +7,7 @@ import { Navbar } from "@/components/shared/navigation/Navbar";
 import { findStateLabelForSlug } from "@/constants/stateMapViewports";
 import { PublicFooter } from "@/features/home/components/PublicFooter";
 import { StatePageView } from "@/features/states/components/StatePageView";
+import { uiPageSectionY } from "@/lib/responsiveLayout";
 import { uiPublicMainOffset } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 import { listStatePropertyMapPins } from "@/server/queries/locationMap.queries";
@@ -56,7 +57,7 @@ export default async function StateMapPage({ params }: PageProps) {
           title={stateLabel}
           description="Browse properties across this state on the map — hover a pin for the listing photo, type, and price. Pins are approximate until sellers add an exact address."
         />
-        <Container className="pb-12 md:pb-16">
+        <Container className={cn(uiPageSectionY, "min-w-0")}>
           <StatePageView stateLabel={stateLabel} pins={pins} />
         </Container>
       </main>

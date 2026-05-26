@@ -13,6 +13,7 @@ import { NavbarActions } from "./NavbarActions";
 import { UserNavbarProfile } from "./UserNavbarProfile";
 import { SignOutButton } from "@/features/auth/components/SignOutButton";
 import { ROUTES } from "@/constants/routes";
+import { navbarSignOutOnPrimaryClass } from "@/components/shared/navigation/navbarActionStyles";
 import { uiIconInteractive } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
@@ -65,7 +66,7 @@ export const MobileNavbar = ({
         variant="outline"
         size="default"
         formClassName="w-full"
-        className="border-primary-foreground/30 text-primary-foreground hover:border-gold hover:bg-primary-foreground/10 w-full cursor-pointer rounded-xl bg-transparent font-semibold shadow-sm transition-all duration-300 hover:shadow-md active:translate-y-px"
+        className={navbarSignOutOnPrimaryClass}
       />
     </>
   ) : (

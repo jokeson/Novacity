@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import type { ZodError } from "zod";
 
 import { ROUTES } from "@/constants/routes";
+import { formatPersonName } from "@/lib/formatPersonName";
 import { roleCanAccessDashboard } from "@/server/auth/permissions";
 import { getSession } from "@/server/auth/session";
 import { getUserByIdLean } from "@/server/queries/user.queries";
@@ -106,7 +107,7 @@ export const submitOwnerVerificationApplicationAction = async (
 
   await createOwnerVerificationApplication({
     userId: new mongoose.Types.ObjectId(auth.sub),
-    fullName: data.fullName,
+    fullName: formatPersonName(data.fullName),
     phone: data.phone,
     residentialAddress: data.residentialAddress,
     postingState: data.postingState,

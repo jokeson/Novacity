@@ -74,16 +74,23 @@ Use:
 ## Borders
 
 Use:
-- border border-gray-200
+- `border-2 border-gray-200` (or `border-2 border-border` token) for cards and image frames
 
 ---
 
 ## Shadows
 
-Use:
+Homepage cards use **border-only** surfaces — no elevation shadows.
 
-<!-- - shadow-sm
-- hover:shadow-md -->
+Use:
+- `border border-gray-200` (or `border-border` token)
+- `rounded-2xl`
+
+Do not use `shadow-sm` / `hover:shadow-md` on homepage listing, state, company, or promo cards.
+
+**Images:** No elevation shadows or decorative rings on photos — use `uiPropertyImageFrame` / `uiStandaloneImageFrame` in `uiContext.ts` (`border-2`, `shadow-none`).
+
+Other surfaces (dropdowns, modals, buttons) may still use shadows where appropriate.
 ---
 
 ## Transitions
@@ -123,7 +130,7 @@ Use shadcn/ui patterns for:
 - Use Tailwind CSS
 - Keep spacing consistent
 - Use clean borders
-- Use subtle shadows
+- Avoid elevation shadows on homepage cards
 - Use proper hover states
 - Use proper focus states
 - Keep components reusable
@@ -202,6 +209,9 @@ The application must support:
 
 Use:
 - Mobile-first development
+- Layout tokens in [`src/lib/responsiveLayout.ts`](../src/lib/responsiveLayout.ts): `uiAppBody`, `uiAppMain`, `uiDashboardMainColumn`, `uiPageSectionY`, `uiPropertyCardGrid`
+- `min-w-0` + `overflow-x-clip` on main columns to prevent horizontal scroll
+- `Container` horizontal padding: `px-4` → `sm:px-5` → `md:px-6` → `lg:px-8`
 
 ---
 
@@ -237,13 +247,13 @@ The platform should feel like:
 
 # Implementation (codebase — May 2026)
 
-**Canonical tokens:** [`src/lib/uiContext.ts`](../src/lib/uiContext.ts) — typography, surfaces (`rounded-2xl`, `border-border`, `shadow-sm` / `hover:shadow-md`, `transition-all duration-300`), public main offset, property card shell, **gold CTA + icon tokens**.
+**Canonical tokens:** [`src/lib/uiContext.ts`](../src/lib/uiContext.ts) — typography, surfaces (`rounded-2xl`, `border-2 border-border`, `transition-all duration-300`), `uiPropertyImageFrame` / `uiStandaloneImageFrame` (border-only photos), public main offset, property card shell, **gold CTA + icon tokens**. Homepage card borders: [`homeCardSurfaces.ts`](../src/features/home/constants/homeCardSurfaces.ts) (`HOME_CARD_BORDER`, `HOME_PROPERTY_CARD_NO_SHADOW`).
 
 **Global theme:** [`src/app/globals.css`](../src/app/globals.css) — CSS variables match brand colors above; utility classes `.text-hero-heading`, `.text-section-title`, `.surface-card-ui`, etc.
 
 **Gold CTAs & icons (Luxury Gold `#D4A017`):**
 
-- **Button variant:** `variant="gold"` on [`Button`](../src/components/ui/button.tsx) — filled gold background, **white** label, hover darken + shadow.
+- **Button variant:** `variant="gold"` on [`Button`](../src/components/ui/button.tsx) — filled gold background, **white** label, hover darken.
 - **Token helpers:** `uiButtonGold`, `uiButtonGoldProminent`, `uiIconAccent`, `uiIconInteractive` in `uiContext.ts`.
 - **Primary action buttons** use gold: **List a property** / **Verify to list** (navbar, hero, homepage empty states, dashboard listings), **Send message** (contact), **Learn more** (featured listing rail footer), property **Send inquiry**, promo **Browse** CTAs on split sections.
 - **Interactive icons** (search, mobile menu, toolbar controls): muted default → gold on hover/focus via `uiIconInteractive`; decorative/empty-state icons use `uiIconAccent` / `text-gold`.

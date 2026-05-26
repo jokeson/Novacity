@@ -5,6 +5,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { PersonName } from "@/components/shared/PersonName";
+import { formatPersonName } from "@/lib/formatPersonName";
 import type { UserRole } from "@/types/user";
 
 import { UserAvatarUpload } from "./UserAvatarUpload";
@@ -24,7 +26,8 @@ export const SettingsPageView = ({
   image,
   role,
 }: SettingsPageViewProps) => {
-  const displayName = name.trim() || "Not set";
+  const displayName =
+    name.trim().length > 0 ? formatPersonName(name) : "Not set";
 
   return (
     <div className="grid gap-6 lg:grid-cols-3">
@@ -36,15 +39,24 @@ export const SettingsPageView = ({
             image, then save.
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col items-center gap-6 pt-2">
+        <CardContent className="flex flex-col items-center gap-6 pt-2 max-md:text-center">
           <UserAvatarUpload
             key={`${image}`}
             displayName={displayName}
             email={email}
             initialImageUrl={image}
           />
-          <div className="border-border w-full border-t pt-4 text-center">
-            <p className="text-foreground font-medium">{displayName}</p>
+          <div className="border-border w-full border-t pt-4 text-center max-md:px-2">
+            {name.trim() ? (
+              <PersonName
+                name={name}
+                centerOnMobile
+                as="p"
+                className="text-foreground font-medium"
+              />
+            ) : (
+              <p className="text-foreground font-medium">Not set</p>
+            )}
             <p className="text-muted-foreground mt-1 text-sm">{email}</p>
             <p className="text-muted-foreground mt-2 text-xs capitalize">Role: {role}</p>
           </div>
@@ -60,11 +72,20 @@ export const SettingsPageView = ({
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-border bg-muted/30 px-4 py-3 shadow-sm">
+          <div className="rounded-2xl border border-border bg-muted/30 px-4 py-3 shadow-sm max-md:col-span-2 max-md:text-center">
             <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
               Full name
             </p>
-            <p className="text-foreground mt-1 text-sm font-medium">{displayName}</p>
+            {name.trim() ? (
+              <PersonName
+                name={name}
+                centerOnMobile
+                as="p"
+                className="text-foreground mt-1 text-sm font-medium"
+              />
+            ) : (
+              <p className="text-foreground mt-1 text-sm font-medium">Not set</p>
+            )}
           </div>
           <div className="rounded-2xl border border-border bg-muted/30 px-4 py-3 shadow-sm">
             <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">

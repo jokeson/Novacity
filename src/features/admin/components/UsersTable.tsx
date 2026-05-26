@@ -21,6 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { formatPersonName } from "@/lib/formatPersonName";
 import {
   adminDeleteUserAction,
   adminPromoteUserToCompanyAction,
@@ -121,7 +122,7 @@ export const UsersTable = ({ rows }: UsersTableProps) => {
               <TableRow key={row.id}>
                 <TableCell className="font-medium">{row.email}</TableCell>
                 <TableCell className="text-muted-foreground max-w-[180px] truncate text-sm">
-                  {row.name || "—"}
+                  {row.name ? formatPersonName(row.name) : "—"}
                 </TableCell>
                 <TableCell className="capitalize">{row.role}</TableCell>
                 <TableCell>

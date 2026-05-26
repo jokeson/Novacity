@@ -17,11 +17,13 @@ export const PageHeader = ({
   className,
 }: PageHeaderProps) => {
   return (
-    <div className={cn(uiPageHeaderShell, className)}>
+    <div className={cn(uiPageHeaderShell, "min-w-0", className)}>
       <Container>
-        <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-          <div className="flex min-w-0 flex-1 flex-col gap-2">
-            <h1 className={uiTypography.pageTitle}>{title}</h1>
+        <div className="flex min-w-0 flex-col gap-4 sm:gap-5 md:flex-row md:items-start md:justify-between md:gap-6">
+          <div className="flex min-w-0 flex-1 flex-col gap-1.5 sm:gap-2">
+            <h1 className={cn(uiTypography.pageTitle, "text-2xl sm:text-3xl")}>
+              {title}
+            </h1>
             {description ? (
               <p className={cn(uiTypography.body, "max-w-2xl")}>{description}</p>
             ) : null}

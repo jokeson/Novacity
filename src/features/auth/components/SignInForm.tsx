@@ -10,6 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ROUTES } from "@/constants/routes";
+import {
+  authModalFormClassName,
+  authModalSubmitClassName,
+} from "@/features/auth/constants/authModalStyles";
 import { uiGoldTextLink } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +28,7 @@ export type SignInFormProps = {
   defaultEmail?: string;
   /** When set (e.g. inside `AuthModal`), switches view instead of navigating to `/sign-up`. */
   onSwitchToSignUp?: () => void;
+  variant?: "page" | "modal";
 };
 
 export const SignInForm = ({
@@ -31,7 +36,9 @@ export const SignInForm = ({
   className,
   defaultEmail = "",
   onSwitchToSignUp,
+  variant = "page",
 }: SignInFormProps) => {
+  const isModal = variant === "modal";
   const router = useRouter();
   const {
     register,
@@ -68,10 +75,10 @@ export const SignInForm = ({
   return (
     <form
       onSubmit={onSubmit}
-      className={cn("flex flex-col gap-5", className)}
+      className={cn(isModal ? authModalFormClassName : "flex flex-col gap-5", className)}
       noValidate
     >
-      <div className="flex flex-col gap-2">
+      <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
         <Label htmlFor="sign-in-email">Email</Label>
         <Input
           id="sign-in-email"
@@ -87,7 +94,7 @@ export const SignInForm = ({
           </p>
         ) : null}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
         <div className="flex items-center justify-between gap-2">
           <Label htmlFor="sign-in-password">Password</Label>
           <Link href={ROUTES.forgotPassword} className={cn(uiGoldTextLink, "text-xs")}>
@@ -111,7 +118,10 @@ export const SignInForm = ({
       <Button
         type="submit"
         variant="gold"
-        className="flex h-11 w-full items-center justify-center rounded-xl"
+        className={cn(
+          "flex w-full items-center justify-center rounded-xl",
+          isModal ? authModalSubmitClassName : "h-11",
+        )}
         aria-busy={isSubmitting}
         disabled={isSubmitting}
       >
@@ -124,11 +134,18 @@ export const SignInForm = ({
           "Sign in"
         )}
       </Button>
-      <p className="text-muted-foreground text-xs leading-relaxed">
-        Staff accounts with elevated privileges unlock the admin console automatically after
-        authentication.
-      </p>
-      <div className="text-muted-foreground text-center text-sm">
+      {isModal ? null : (
+        <p className="text-muted-foreground text-xs leading-relaxed">
+          Staff accounts with elevated privileges unlock the admin console automatically after
+          authentication.
+        </p>
+      )}
+      <div
+        className={cn(
+          "text-muted-foreground text-center",
+          isModal ? "text-xs" : "text-sm",
+        )}
+      >
         Need an account?{" "}
         {onSwitchToSignUp ? (
           <button

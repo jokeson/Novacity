@@ -23,6 +23,7 @@ import type {
   OwnerIdDocumentType,
   OwnerVerificationApplicationStatus,
 } from "@/types/ownerVerification";
+import { formatPersonName } from "@/lib/formatPersonName";
 
 const nationalityLabels: Record<ApplicantNationality, string> = {
   "south-sudanese": "South Sudanese",
@@ -76,6 +77,7 @@ export const AdminOwnerVerificationRow = ({
   idDocumentUrl,
   rejectionReason,
 }: AdminOwnerVerificationRowProps) => {
+  const formattedFullName = formatPersonName(fullName);
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [rejectReason, setRejectReason] = useState("");
@@ -120,7 +122,7 @@ export const AdminOwnerVerificationRow = ({
         <div className="text-muted-foreground text-xs">{applicantName}</div>
       </td>
       <td className="text-muted-foreground px-3 py-3 text-sm">
-        <div className="text-foreground font-medium">{fullName}</div>
+        <div className="text-foreground font-medium">{formattedFullName}</div>
         <div>{phone}</div>
         <div className="mt-1 max-w-xs leading-snug">{residentialAddress}</div>
         <div className="text-foreground mt-1">State: {postingState}</div>

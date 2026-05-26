@@ -5,7 +5,15 @@
 
 export const uiTransition = "transition-all duration-300";
 
-export const uiBorder = "border border-border";
+export const uiBorder = "border-2 border-border";
+
+/** Property/listing image frame — border only, no elevation or ring. */
+export const uiPropertyImageFrame =
+  "relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted border-2 border-border shadow-none ring-0";
+
+/** Standalone image panels (promo, hero preview, uploads) — not nested in a card shell. */
+export const uiStandaloneImageFrame =
+  "relative overflow-hidden rounded-2xl border-2 border-border shadow-none ring-0";
 
 export const uiSurfaceCard =
   "border-border bg-card rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-md";
@@ -16,10 +24,14 @@ export const uiSurfaceCardStatic =
 export const uiSurfaceMutedPanel = "border-border bg-muted/30 rounded-2xl border";
 
 export const uiPageHeaderShell =
-  "border-border border-b bg-muted/40 py-10 transition-colors duration-300 md:py-12";
+  "border-border border-b bg-muted/40 py-6 transition-colors duration-300 sm:py-8 md:py-10 lg:py-12";
+
+/** Marketplace `/properties` browse header — deep navy, compact on smaller breakpoints. */
+export const uiMarketplacePageHeaderShell =
+  "border-b border-primary-foreground/10 bg-primary text-primary-foreground py-4 transition-colors duration-300 sm:py-5 md:py-6 lg:py-7";
 
 export const uiStickySubheaderShell =
-  "border-border sticky top-16 z-40 border-b bg-muted/90 py-8 backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-muted/75 md:py-10 lg:top-[4.25rem]";
+  "border-border sticky top-16 z-40 border-b bg-muted/90 py-5 backdrop-blur-md transition-colors duration-300 supports-[backdrop-filter]:bg-muted/75 sm:py-6 md:py-8 lg:top-[4.25rem] lg:py-10";
 
 export const uiTypography = {
   hero: "font-heading text-5xl font-semibold leading-tight tracking-tight text-balance md:text-6xl",
@@ -36,7 +48,7 @@ export const uiTypography = {
 
 /** Property card shell — fixed footprint; image hover per UI-Context. */
 export const uiPropertyCardShell =
-  "@container/property-card group border-border bg-card flex h-full w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:shadow-md";
+  "@container/property-card group border-border bg-card flex h-full w-full max-w-full min-w-0 flex-col overflow-hidden rounded-2xl border-2 shadow-sm transition-all duration-300 hover:shadow-md";
 
 export const uiPropertyCardTitle =
   "text-foreground line-clamp-1 shrink-0 overflow-hidden font-semibold leading-[1.175rem] tracking-tight text-[clamp(0.625rem,4.5cqw,1.25rem)]";
@@ -67,4 +79,5 @@ export const uiIconAccent = "text-gold";
 export const uiIconInteractive =
   "text-muted-foreground transition-colors duration-300 hover:text-gold focus-visible:text-gold";
 
-export const uiPublicMainOffset = "flex min-h-0 flex-1 flex-col pt-16 lg:pt-[4.25rem]";
+export const uiPublicMainOffset =
+  "flex min-h-0 min-w-0 w-full max-w-full flex-1 flex-col overflow-x-clip pt-16 lg:pt-[4.25rem]";

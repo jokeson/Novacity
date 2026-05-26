@@ -8,18 +8,24 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { buttonVariants } from "@/components/ui/button";
 import { propertyDetailPath, ROUTES } from "@/constants/routes";
-import { homeListingCardClassName } from "@/features/home/constants/homeCardSurfaces";
+import {
+  HOME_EMPTY_STATE_NO_SHADOW,
+  HOME_PROPERTY_CARD_MOBILE_LAYOUT,
+  HOME_PROPERTY_CARD_NO_SHADOW,
+  homeListingCardClassName,
+} from "@/features/home/constants/homeCardSurfaces";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
 import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import type { HomeListingSectionConfig } from "@/features/home/types/homeListing";
 import { PropertyCard } from "@/features/properties/components/PropertyCard";
 import { publicPropertyListItemToCardProps } from "@/features/properties/utils/publicPropertyListItemToCardProps";
 import type { PublicPropertyListItem } from "@/server/queries/propertySearch.queries";
+import { uiPropertyCardGrid } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 const gridClassName: Record<HomeListingSectionConfig["gridCols"], string> = {
-  3: "sm:grid-cols-2 xl:grid-cols-3",
-  4: "sm:grid-cols-2 lg:grid-cols-4",
+  3: "",
+  4: "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
 };
 
 export type HomeListingSectionProps = HomeListingSectionConfig & {
@@ -69,7 +75,7 @@ export const HomeListingSection = ({
         "list-none gap-4",
         isSplitPromo
           ? "flex flex-col"
-          : cn("mt-10 grid items-stretch gap-6", gridClassName[gridCols]),
+          : cn(uiPropertyCardGrid, "mt-8 sm:mt-10", gridClassName[gridCols]),
       )}
     >
       {visibleListings.map((item, index) => {
@@ -83,14 +89,19 @@ export const HomeListingSection = ({
           <li key={item.slug} className="min-w-0">
             <Link
               href={propertyDetailPath(item.slug)}
-              className="focus-visible:ring-ring block h-full w-full min-w-0 max-w-full cursor-pointer rounded-2xl outline-none transition-shadow duration-300 focus-visible:ring-[3px] focus-visible:ring-ring/55"
+              className="focus-visible:ring-ring block h-full w-full min-w-0 max-w-full cursor-pointer rounded-2xl outline-none transition-colors duration-300 focus-visible:ring-[3px] focus-visible:ring-ring/55"
               aria-label={`View listing: ${cardProps.title}`}
             >
               <PropertyCard
                 {...cardProps}
                 image={cardImage}
                 priorityImage={index < priorityImageCount}
-                className={cn(listingCardSurfaceClassName, "max-md:bg-background")}
+                mobileCenterContent={HOME_PROPERTY_CARD_MOBILE_LAYOUT}
+                className={cn(
+                  listingCardSurfaceClassName,
+                  HOME_PROPERTY_CARD_NO_SHADOW,
+                  "max-md:bg-background",
+                )}
               />
             </Link>
           </li>
@@ -129,7 +140,7 @@ export const HomeListingSection = ({
 
         {fetchFailed ? (
           <EmptyState
-            className="mt-10"
+            className={cn("mt-10", HOME_EMPTY_STATE_NO_SHADOW)}
             title={errorTitle}
             description={
               fetchErrorMessage ??
@@ -149,6 +160,7 @@ export const HomeListingSection = ({
           isSplitPromo ? (
             splitPromoLayout(
               <EmptyState
+                className={HOME_EMPTY_STATE_NO_SHADOW}
                 title={emptyTitle}
                 description={emptyDescription}
                 action={
@@ -165,7 +177,7 @@ export const HomeListingSection = ({
             )
           ) : (
             <EmptyState
-              className="mt-10"
+              className={cn("mt-10", HOME_EMPTY_STATE_NO_SHADOW)}
               title={emptyTitle}
               description={emptyDescription}
               action={

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
 import type { HomeListingPromoImage } from "@/features/home/types/homeListing";
+import { uiStandaloneImageFrame } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
 export type HomeListingSectionPromoImageProps = {
@@ -23,7 +24,8 @@ export const HomeListingSectionPromoImage = ({
   return (
     <div
       className={cn(
-        "border-border relative min-h-[18rem] w-full overflow-hidden rounded-2xl border shadow-lg sm:min-h-[22rem] lg:min-h-[28rem]",
+        uiStandaloneImageFrame,
+        "min-h-[18rem] w-full sm:min-h-[22rem] lg:min-h-[28rem]",
         className,
       )}
     >
@@ -51,7 +53,7 @@ export const HomeListingSectionPromoImage = ({
               <p
                 key={line}
                 className={cn(
-                  "font-heading text-balance text-white drop-shadow-sm",
+                  "font-heading text-balance text-white",
                   index === 0 &&
                     "text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl",
                   index === 1 &&

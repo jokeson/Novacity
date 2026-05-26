@@ -1,5 +1,6 @@
 import { DashboardSidebar } from "@/features/dashboard/components/DashboardSidebar";
 import { NotificationBell } from "@/features/notifications/components/NotificationBell";
+import { uiDashboardMainColumn } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 export type DashboardLayoutProps = {
@@ -19,12 +20,12 @@ export const DashboardLayout = ({
   return (
     <div
       className={cn(
-        "bg-muted/20 flex min-h-0 flex-1 flex-col md:flex-row md:items-start",
+        "bg-muted/20 flex min-h-0 min-w-0 w-full flex-1 flex-col md:flex-row md:items-start",
         className,
       )}
     >
       <DashboardSidebar unreadNotificationCount={unreadNotificationCount} />
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
+      <div className={uiDashboardMainColumn}>
         <div className="border-border flex justify-end border-b bg-background px-4 py-3 md:hidden">
           <NotificationBell initialUnreadCount={unreadNotificationCount} />
         </div>

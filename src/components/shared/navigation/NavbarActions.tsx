@@ -3,6 +3,13 @@
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import {
+  navbarActionSizeClass,
+  navbarActionStackedSizeClass,
+  navbarGhostSignInClass,
+  navbarGoldCtaClass,
+  navbarOutlineOnPrimaryClass,
+} from "@/components/shared/navigation/navbarActionStyles";
 import { cn } from "@/lib/utils";
 
 import { AuthModal, type AuthModalView } from "@/features/auth/components/AuthModal";
@@ -26,6 +33,7 @@ export const NavbarActions = ({
   onRequestAuth,
 }: NavbarActionsProps) => {
   const sizeCls = stacked ? "default" : "sm";
+  const sizeClass = stacked ? navbarActionStackedSizeClass : navbarActionSizeClass;
   const [authOpen, setAuthOpen] = useState(false);
   const [authInitialView, setAuthInitialView] = useState<AuthModalView>("sign-in");
 
@@ -50,9 +58,13 @@ export const NavbarActions = ({
       >
         <Button
           type="button"
-          variant="ghost"
+          variant={stacked ? "outline" : "ghost"}
           size={sizeCls}
-          className="text-gold hover:text-gold hover:bg-gold/10 cursor-pointer justify-center"
+          className={cn(
+            stacked ? navbarOutlineOnPrimaryClass : navbarGhostSignInClass,
+            sizeClass,
+            stacked && "w-full",
+          )}
           onClick={() => handleOpenAuth("sign-in")}
         >
           Sign in
@@ -61,7 +73,7 @@ export const NavbarActions = ({
           type="button"
           variant="gold"
           size={sizeCls}
-          className="cursor-pointer justify-center"
+          className={cn(navbarGoldCtaClass, sizeClass, stacked && "w-full")}
           onClick={() => handleOpenAuth("sign-up")}
         >
           Create account

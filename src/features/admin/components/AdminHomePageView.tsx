@@ -1,4 +1,5 @@
 import { Container } from "@/components/shared/Container";
+import { formatPersonName } from "@/lib/formatPersonName";
 import { AdminQuickNavTabs } from "@/features/admin/components/AdminQuickNavTabs";
 import { AdminStatsCards, type AdminStatsSummary } from "@/features/admin/components/AdminStatsCards";
 
@@ -8,7 +9,9 @@ export type AdminHomePageViewProps = {
 };
 
 export const AdminHomePageView = ({ displayName, stats }: AdminHomePageViewProps) => {
-  const welcomeName = displayName.trim() || "there";
+  const welcomeName = displayName.trim()
+    ? formatPersonName(displayName)
+    : "there";
 
   return (
     <Container className="space-y-8 py-8 md:space-y-10 md:py-10">

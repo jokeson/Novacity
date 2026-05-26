@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { uiPropertyImageFrame } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
 export type PropertyImageProps = {
@@ -27,7 +28,7 @@ export const PropertyImage = ({
   return (
     <div
       className={cn(
-        "relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted shadow-sm ring-1 ring-border",
+        uiPropertyImageFrame,
         className,
       )}
     >

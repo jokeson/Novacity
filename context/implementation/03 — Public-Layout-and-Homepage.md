@@ -140,7 +140,7 @@ Cards must read clearly against each section background and match Novacity brand
 **On white sections** (houses for sale, apartments, latest, etc.):
 
 - Listing cards use the light gray `bg-card` surface so they stand out on white.
-- Keep `border-border`, `rounded-2xl`, `shadow-sm`, and `hover:shadow-md`.
+- Keep `border-2 border-border` and `rounded-2xl` — border-only, no elevation shadows on cards or images.
 
 **On muted gray sections** (featured, rentals, commercial, states, company):
 
@@ -151,7 +151,11 @@ Cards must read clearly against each section background and match Novacity brand
 
 - `HOME_CARD_SURFACE_ON_WHITE_SECTION` → `bg-card`
 - `HOME_CARD_SURFACE_ON_MUTED_SECTION` → `bg-background`
+- `HOME_CARD_BORDER` — border-only chrome for state/company cards
+- `HOME_PROPERTY_CARD_NO_SHADOW` — removes PropertyCard shell shadows on homepage
+- `HOME_EMPTY_STATE_NO_SHADOW` — removes EmptyState shadows on homepage
 - `homeListingCardClassName(tone)` — passed into `PropertyCard` from `HomeListingSection`
+- Homepage listing cards use `mobileCenterContent` on `PropertyCard` — centered title/location/meta/price and roomier padding below `md`
 
 ---
 
@@ -192,7 +196,7 @@ Marketing content: what Novacity is, how the marketplace works, and how we help 
 
 ## UI and architecture rules
 
-- Follow `context/UI-Context.md` (navy, gold, light gray, white, `rounded-2xl`, subtle shadows)
+- Follow `context/UI-Context.md` (navy, gold, light gray, white, `rounded-2xl`, border-only homepage cards)
 - Use shadcn/ui and Tailwind only
 - Keep routes thin; reuse components; fetch on the server where it fits
 - Keyboard focus visible; proper labels on links and buttons

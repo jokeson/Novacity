@@ -6,6 +6,7 @@ import { PartyPopper, Sparkles } from "lucide-react";
 
 import { ROUTES } from "@/constants/routes";
 import { buttonVariants } from "@/components/ui/button";
+import { formatPersonName } from "@/lib/formatPersonName";
 import { cn } from "@/lib/utils";
 
 export type OwnerVerificationApprovedCelebrationProps = {
@@ -16,7 +17,9 @@ export const OwnerVerificationApprovedCelebration = ({
   displayName,
 }: OwnerVerificationApprovedCelebrationProps) => {
   const reduceMotion = useReducedMotion();
-  const name = displayName.trim() || "Owner";
+  const name = displayName.trim()
+    ? formatPersonName(displayName)
+    : "Owner";
 
   return (
     <motion.div

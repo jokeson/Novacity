@@ -35,7 +35,7 @@ export const DashboardStatsCards = ({ stats }: DashboardStatsCardsProps) => {
   ] as const;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+    <div className="grid min-w-0 gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
       {items.map((item) => (
         <Card
           key={item.label}

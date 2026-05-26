@@ -227,7 +227,7 @@ export const AdminHomeHeroForm = ({ initialValues }: AdminHomeHeroFormProps) => 
             </label>
           </div>
           {canPreview ? (
-            <div className="border-border relative mt-2 aspect-[4/3] max-w-md overflow-hidden rounded-xl border shadow-sm">
+            <div className="border-border relative mt-2 aspect-[4/3] max-w-md overflow-hidden rounded-xl border-2 shadow-none">
               <Image
                 src={previewSrc}
                 alt={imageAlt.trim() || "Hero preview"}

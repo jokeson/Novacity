@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getAppBaseUrl } from "@/lib/app-url";
+import { uiAppBody } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -45,7 +46,7 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", inter.variable, "font-sans")}
     >
-      <body className="min-h-full bg-background font-sans text-foreground flex flex-col">
+      <body className={cn(uiAppBody, "font-sans")}>
         {children}
       </body>
     </html>

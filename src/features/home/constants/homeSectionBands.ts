@@ -1,6 +1,6 @@
 import type { HomeListingSectionTone } from "@/features/home/types/homeListing";
 
-const sectionPadding = "py-16 md:py-20 lg:py-24";
+const sectionPadding = "py-10 sm:py-14 md:py-16 lg:py-20 xl:py-24";
 
 function cnBand(background: string): string {
   return `relative overflow-hidden border-border border-t ${background} ${sectionPadding}`;

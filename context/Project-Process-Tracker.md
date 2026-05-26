@@ -1,6 +1,18 @@
 # Novacity — Project Tracker
 
-Last Updated: May 25, 2026 (Vercel deployment preparation)
+Last Updated: May 26, 2026 (Homepage card borders)
+
+**May 26, 2026 — Auth modal + navbar CTAs:** `AuthModal` restyled like search modal (navy/gold header, compact forms). Shared `navbarActionStyles` — taller Sign in, Create account, Dashboard, List a property, Sign out on mobile/tablet (`max-lg`).
+
+**May 26, 2026 — Responsive layout pass:** Added `src/lib/responsiveLayout.ts` (overflow guards, page padding, property card grids). Applied across root body, `Container`, navbar, dashboard/admin shells, homepage bands/hero, property details, marketplace/search grids, footer, and dashboard overview.
+
+**May 26, 2026 — Marketplace page header:** `/properties` uses `MarketplacePageHeader` — deep navy (`bg-primary`), gold title with `Store` icon, white description, compact responsive vertical padding (`py-4` → `lg:py-7`).
+
+**May 26, 2026 — Homepage mobile listing cards:** `PropertyCard` `mobileCenterContent` centers title, location, posted date, meta, and price below `md` with increased padding (`px-5`, `pb-5`, image `p-4`); enabled on homepage via `HOME_PROPERTY_CARD_MOBILE_LAYOUT`.
+
+**May 26, 2026 — Image frames & thicker borders:** Removed shadows/rings from all property and standalone image frames (`uiPropertyImageFrame`, `uiStandaloneImageFrame`); card and homepage borders bumped to `border-2`. Touches `PropertyImage`, `PropertyCard`, gallery thumbs, promo/hero preview, listing uploads, avatar, map hover card, homepage cards.
+
+**May 26, 2026 — Homepage card borders:** Removed elevation shadows from homepage cards (listing rails, state highlights, company stats, promo panels, empty states, advanced search panel). Added `HOME_CARD_BORDER`, `HOME_PROPERTY_CARD_NO_SHADOW`, and `HOME_EMPTY_STATE_NO_SHADOW` in `homeCardSurfaces.ts`. Updated `context/UI-Context.md` and implementation doc 03.
 
 **May 25, 2026 — Homepage visual polish:** Gold navbar search icon with glow; richer multi-stop section gradients and decor overlays on all homepage bands; gold gradient accent under section titles.
 

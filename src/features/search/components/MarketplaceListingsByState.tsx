@@ -8,6 +8,7 @@ import { PropertyCard } from "@/features/properties/components/PropertyCard";
 import { publicPropertyListItemToCardProps } from "@/features/properties/utils/publicPropertyListItemToCardProps";
 import type { StateListingGroup } from "@/features/search/utils/groupListingsByState";
 import { stateSlugFromLabel } from "@/features/search/utils/stateSlug";
+import { uiPropertyCardGrid } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 export type MarketplaceListingsByStateProps = {
@@ -43,7 +44,7 @@ export const MarketplaceListingsByState = ({
       : "";
 
   return (
-    <div className="flex flex-col gap-12 md:gap-14">
+    <div className="flex min-w-0 flex-col gap-8 sm:gap-10 md:gap-12 lg:gap-14">
       {groups.map((group) => {
         const headingId = `state-group-${stateSlugFromLabel(group.stateLabel || "other")}`;
         return (
@@ -61,7 +62,7 @@ export const MarketplaceListingsByState = ({
                   : `${group.items.length} properties in this region`
               }
             />
-            <ul className="grid list-none items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <ul className={uiPropertyCardGrid}>
               {group.items.map((item, index) => {
                 const cardProps = publicPropertyListItemToCardProps(item);
                 return (

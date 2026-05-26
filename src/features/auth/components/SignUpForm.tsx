@@ -9,6 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ROUTES } from "@/constants/routes";
+import {
+  authModalFormClassName,
+  authModalSubmitClassName,
+} from "@/features/auth/constants/authModalStyles";
+import { formatPersonName } from "@/lib/formatPersonName";
 import { uiGoldTextLink } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
@@ -22,17 +27,21 @@ export type SignUpFormProps = {
   onSignUpSuccess?: (email: string) => void;
   /** When set (e.g. inside `AuthModal`), switches view instead of navigating to `/sign-in`. */
   onSwitchToSignIn?: () => void;
+  variant?: "page" | "modal";
 };
 
 export const SignUpForm = ({
   className,
   onSignUpSuccess,
   onSwitchToSignIn,
+  variant = "page",
 }: SignUpFormProps) => {
+  const isModal = variant === "modal";
   const {
     register,
     handleSubmit,
     setError,
+    setValue,
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -78,17 +87,25 @@ export const SignUpForm = ({
   return (
     <form
       onSubmit={onSubmit}
-      className={cn("flex flex-col gap-5", className)}
+      className={cn(isModal ? authModalFormClassName : "flex flex-col gap-5", className)}
       noValidate
     >
-      <div className="flex flex-col gap-2">
+      <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
         <Label htmlFor="sign-up-name">Full name (optional)</Label>
         <Input
           id="sign-up-name"
           type="text"
           autoComplete="name"
           aria-invalid={errors.name ? true : undefined}
-          {...register("name")}
+          {...register("name", {
+            onBlur: (event) => {
+              const value = event.target.value;
+              if (!value.trim()) {
+                return;
+              }
+              setValue("name", formatPersonName(value), { shouldValidate: true });
+            },
+          })}
         />
         {errors.name ? (
           <p className="text-destructive text-sm" role="alert">
@@ -96,7 +113,7 @@ export const SignUpForm = ({
           </p>
         ) : null}
       </div>
-      <div className="flex flex-col gap-2">
+      <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
         <Label htmlFor="sign-up-email">Email</Label>
         <Input
           id="sign-up-email"
@@ -111,40 +128,50 @@ export const SignUpForm = ({
           </p>
         ) : null}
       </div>
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="sign-up-password">Password</Label>
-        <Input
-          id="sign-up-password"
-          type="password"
-          autoComplete="new-password"
-          aria-invalid={errors.password ? true : undefined}
-          {...register("password")}
-        />
-        {errors.password ? (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.password.message}
-          </p>
-        ) : null}
-      </div>
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="sign-up-confirm">Confirm password</Label>
-        <Input
-          id="sign-up-confirm"
-          type="password"
-          autoComplete="new-password"
-          aria-invalid={errors.confirmPassword ? true : undefined}
-          {...register("confirmPassword")}
-        />
-        {errors.confirmPassword ? (
-          <p className="text-destructive text-sm" role="alert">
-            {errors.confirmPassword.message}
-          </p>
-        ) : null}
+      <div
+        className={cn(
+          "grid gap-2.5",
+          isModal ? "grid-cols-1 sm:grid-cols-2 sm:gap-x-3" : "grid-cols-1",
+        )}
+      >
+        <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
+          <Label htmlFor="sign-up-password">Password</Label>
+          <Input
+            id="sign-up-password"
+            type="password"
+            autoComplete="new-password"
+            aria-invalid={errors.password ? true : undefined}
+            {...register("password")}
+          />
+          {errors.password ? (
+            <p className="text-destructive text-sm" role="alert">
+              {errors.password.message}
+            </p>
+          ) : null}
+        </div>
+        <div className={cn("flex flex-col", isModal ? "gap-1" : "gap-2")}>
+          <Label htmlFor="sign-up-confirm">Confirm password</Label>
+          <Input
+            id="sign-up-confirm"
+            type="password"
+            autoComplete="new-password"
+            aria-invalid={errors.confirmPassword ? true : undefined}
+            {...register("confirmPassword")}
+          />
+          {errors.confirmPassword ? (
+            <p className="text-destructive text-sm" role="alert">
+              {errors.confirmPassword.message}
+            </p>
+          ) : null}
+        </div>
       </div>
       <Button
         type="submit"
         variant="gold"
-        className="flex h-11 w-full items-center justify-center rounded-xl"
+        className={cn(
+          "flex w-full items-center justify-center rounded-xl",
+          isModal ? authModalSubmitClassName : "h-11",
+        )}
         aria-busy={isSubmitting}
         disabled={isSubmitting}
       >
@@ -157,11 +184,18 @@ export const SignUpForm = ({
           "Create account"
         )}
       </Button>
-      <p className="text-muted-foreground text-xs leading-relaxed">
-        By continuing you agree to fair-use policies. Company access is assigned by Novacity
-        staff after your account exists.
-      </p>
-      <div className="text-muted-foreground text-center text-sm">
+      {isModal ? null : (
+        <p className="text-muted-foreground text-xs leading-relaxed">
+          By continuing you agree to fair-use policies. Company access is assigned by Novacity
+          staff after your account exists.
+        </p>
+      )}
+      <div
+        className={cn(
+          "text-muted-foreground text-center",
+          isModal ? "text-xs" : "text-sm",
+        )}
+      >
         Already registered?{" "}
         {onSwitchToSignIn ? (
           <button type="button" className={uiGoldTextLink} onClick={onSwitchToSignIn}>

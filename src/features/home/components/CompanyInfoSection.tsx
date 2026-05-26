@@ -1,6 +1,9 @@
 import { Container } from "@/components/shared/Container";
 import { SectionTitle } from "@/components/shared/SectionTitle";
-import { HOME_CARD_SURFACE_ON_MUTED_SECTION } from "@/features/home/constants/homeCardSurfaces";
+import {
+  HOME_CARD_BORDER,
+  HOME_CARD_SURFACE_ON_MUTED_SECTION,
+} from "@/features/home/constants/homeCardSurfaces";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
 import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import { cn } from "@/lib/utils";
@@ -41,7 +44,8 @@ export const CompanyInfoSection = () => {
               key={term}
               className={cn(
                 HOME_CARD_SURFACE_ON_MUTED_SECTION,
-                "border-border rounded-2xl border p-5 shadow-sm ring-foreground/5 ring-1",
+                HOME_CARD_BORDER,
+                "p-5",
               )}
             >
               <dt className="text-muted-foreground text-xs uppercase tracking-wide">

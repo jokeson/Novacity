@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import type { ZodError } from "zod";
 
 import { ROUTES } from "@/constants/routes";
+import { formatPersonName } from "@/lib/formatPersonName";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { registerUser, verifyUserCredentials } from "@/server/auth/auth";
 import {
@@ -110,10 +111,11 @@ export const signUpMutation = async (
     };
   }
 
+  const rawName = parsed.data.name?.trim() ?? "";
   const created = await registerUser({
     email: parsed.data.email,
     password: parsed.data.password,
-    name: parsed.data.name,
+    name: rawName ? formatPersonName(rawName) : parsed.data.name,
   });
 
   if (!created.ok) {

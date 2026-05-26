@@ -9,6 +9,7 @@ import { ROUTES } from "@/constants/routes";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
 import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import type { HomepageStateHighlight } from "@/server/queries/propertySearch.queries";
+import { HOME_EMPTY_STATE_NO_SHADOW } from "@/features/home/constants/homeCardSurfaces";
 import { cn } from "@/lib/utils";
 
 import { StateHighlightCard } from "./StateHighlightCard";
@@ -43,7 +44,7 @@ export const StatesHomeSection = ({
 
         {fetchFailed ? (
           <EmptyState
-            className="mt-10"
+            className={cn("mt-10", HOME_EMPTY_STATE_NO_SHADOW)}
             title="Could not load states"
             description={
               fetchErrorMessage ??
@@ -61,7 +62,7 @@ export const StatesHomeSection = ({
           />
         ) : states.length === 0 ? (
           <EmptyState
-            className="mt-10"
+            className={cn("mt-10", HOME_EMPTY_STATE_NO_SHADOW)}
             title="No states with listings yet"
             description="When sellers publish listings with a state or region, popular areas will appear here."
             action={

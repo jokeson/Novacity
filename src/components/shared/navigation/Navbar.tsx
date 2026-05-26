@@ -45,9 +45,9 @@ export const Navbar = async () => {
   return (
     <header className="border-border bg-background/90 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-md">
       <Container>
-        <div className="flex h-16 items-center justify-between gap-4 lg:h-[4.25rem]">
-          <div className="flex min-w-0 flex-1 items-center gap-8">
-            <div className="flex items-center gap-2 lg:gap-8">
+        <div className="flex h-16 min-w-0 items-center justify-between gap-2 sm:gap-3 lg:h-[4.25rem] lg:gap-4">
+          <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-6 lg:gap-8">
+            <div className="flex min-w-0 items-center gap-2 sm:gap-3 lg:gap-8">
               <div className="md:hidden">
                 <MobileNavbar
                   isAuthenticated={Boolean(session)}

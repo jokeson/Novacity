@@ -22,7 +22,7 @@ export const PropertyContactCard = ({
   phone,
 }: PropertyContactCardProps) => {
   return (
-    <aside className="border-border bg-card flex flex-col gap-4 rounded-2xl border p-5 shadow-sm">
+    <aside className="border-border bg-card flex min-w-0 w-full flex-col gap-4 rounded-2xl border-2 p-4 shadow-sm sm:p-5 lg:sticky lg:top-24 lg:self-start">
       <div>
         <h2 className="font-heading text-foreground text-lg font-semibold tracking-tight">
           Contact & location

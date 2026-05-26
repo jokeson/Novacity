@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 
-import { HOME_CARD_SURFACE_ON_MUTED_SECTION } from "@/features/home/constants/homeCardSurfaces";
+import {
+  HOME_CARD_BORDER,
+  HOME_CARD_SURFACE_ON_MUTED_SECTION,
+} from "@/features/home/constants/homeCardSurfaces";
 import { cn } from "@/lib/utils";
 import type { HomepageStateHighlight } from "@/server/queries/propertySearch.queries";
 
@@ -20,7 +23,8 @@ export const StateHighlightCard = ({
   <Link
     href={`/states/${state.slug}`}
     className={cn(
-      "group border-border focus-visible:ring-ring flex min-h-[7.5rem] cursor-pointer flex-col justify-between rounded-2xl border p-4 shadow-sm ring-foreground/5 ring-1 transition-all duration-300 outline-none hover:border-gold/40 hover:shadow-md focus-visible:ring-[3px] focus-visible:ring-ring/55 sm:min-h-[8rem] sm:p-5",
+      "group focus-visible:ring-ring flex min-h-[7.5rem] cursor-pointer flex-col justify-between p-4 outline-none hover:border-gold/40 focus-visible:ring-[3px] focus-visible:ring-ring/55 sm:min-h-[8rem] sm:p-5",
+      HOME_CARD_BORDER,
       HOME_CARD_SURFACE_ON_MUTED_SECTION,
       className,
     )}

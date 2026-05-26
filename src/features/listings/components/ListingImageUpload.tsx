@@ -143,7 +143,7 @@ const ListingImageSlotUpload = ({
                 onChange={(event) => void handleSlotFileSelected(index, event.target.files)}
               />
               {src ? (
-                <div className="border-border group relative overflow-hidden rounded-2xl border bg-background shadow-sm">
+                <div className="border-border group relative overflow-hidden rounded-2xl border-2 bg-background shadow-none">
                   <div className="bg-muted relative aspect-[4/3] w-full">
                     {/* eslint-disable-next-line @next/next/no-img-element -- owner uploads */}
                     <img
@@ -412,7 +412,7 @@ const ListingImageFlexibleUpload = ({ className }: { className?: string }) => {
             {images.map((src, index) => (
               <li
                 key={`${src}-${index}`}
-                className="border-border group relative overflow-hidden rounded-xl border bg-background shadow-sm"
+                className="border-border group relative overflow-hidden rounded-xl border-2 bg-background shadow-none"
               >
                 <div className="bg-muted relative aspect-[4/3] w-full">
                   {/* eslint-disable-next-line @next/next/no-img-element -- arbitrary owner URLs */}

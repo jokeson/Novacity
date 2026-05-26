@@ -8,6 +8,7 @@ import { publicPropertyListItemToCardProps } from "@/features/properties/utils/p
 import { buildPropertySearchQuery } from "@/features/search/utils/buildPropertySearchQuery";
 import type { PropertySearchParams } from "@/features/search/validators/propertySearchParams";
 import type { PublicPropertyListItem } from "@/server/queries/propertySearch.queries";
+import { uiPropertyCardGrid } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
 
 export type SearchResultsProps = {
@@ -54,10 +55,10 @@ export const SearchResults = ({ items, parsed, total }: SearchResultsProps) => {
           </>
         ) : null}
       </p>
-      <div className="grid items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <ul className={uiPropertyCardGrid}>
         {items.map((item, index) => (
+          <li key={item.slug} className="min-w-0">
           <Link
-            key={item.slug}
             href={`${propertyDetailPath(item.slug)}${buildPropertySearchQuery(parsed)}`}
             className="focus-visible:ring-ring block h-full w-full min-w-0 max-w-full rounded-2xl focus-visible:ring-[3px] focus-visible:outline-none"
           >
@@ -66,8 +67,9 @@ export const SearchResults = ({ items, parsed, total }: SearchResultsProps) => {
               priorityImage={index < 3}
             />
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
       {totalPages > 1 ? (
         <nav
           className="border-border flex flex-wrap items-center justify-between gap-4 border-t pt-6"

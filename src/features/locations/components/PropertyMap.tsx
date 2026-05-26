@@ -195,7 +195,7 @@ export const PropertyMap = ({ pins, viewport, className }: PropertyMapProps) => 
       <div className="relative overflow-visible rounded-2xl">
         <div
           ref={containerRef}
-          className="bg-muted/40 novacity-map-canvas h-[min(72vh,680px)] w-full min-h-[320px] overflow-hidden rounded-2xl"
+          className="bg-muted/40 novacity-map-canvas h-[min(58vh,420px)] w-full min-h-[220px] overflow-hidden rounded-2xl sm:min-h-[260px] sm:h-[min(62vh,520px)] md:min-h-[300px] md:h-[min(68vh,600px)] lg:min-h-[320px] lg:h-[min(72vh,680px)]"
           role="application"
           aria-label={viewport.ariaLabel}
         />

@@ -9,11 +9,11 @@ export const PublicFooter = () => {
 
   return (
     <footer
-      className="border-border bg-primary text-primary-foreground border-t pt-16 pb-10"
+      className="border-border bg-primary text-primary-foreground min-w-0 border-t pt-10 pb-8 sm:pt-12 sm:pb-10 md:pt-14 lg:pt-16"
       aria-labelledby="footer-heading"
     >
       <Container>
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid min-w-0 gap-8 sm:gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-4">
           <div className="flex flex-col gap-4">
             <h2 id="footer-heading" className="font-heading text-lg font-semibold">
               Novacity

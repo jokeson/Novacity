@@ -59,7 +59,7 @@ export default async function DashboardListingsPage() {
           </Link>
         }
       />
-      <Container className="py-10">
+      <Container className="min-w-0 py-6 sm:py-8 md:py-10">
         <ListingTable rows={rows} canCreateListings={canCreateListings} />
       </Container>
     </>

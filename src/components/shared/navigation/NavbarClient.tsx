@@ -8,6 +8,8 @@ import { AdvancedSearchModal } from "@/features/home/components/AdvancedSearchMo
 import { SignOutButton } from "@/features/auth/components/SignOutButton";
 import { cn } from "@/lib/utils";
 
+import { navbarSignOutDesktopClass } from "@/components/shared/navigation/navbarActionStyles";
+
 import { AuthenticatedNavbarActions } from "./AuthenticatedNavbarActions";
 import { NavbarActions } from "./NavbarActions";
 import { UserNavbarProfile, type NavbarProfilePayload } from "./UserNavbarProfile";
@@ -72,7 +74,7 @@ export const NavbarClient = ({
               <SignOutButton
                 variant="outline"
                 size="sm"
-                className="border-gold/45 text-foreground hover:border-gold hover:bg-gold/10 cursor-pointer rounded-xl bg-transparent px-4 font-semibold shadow-sm transition-all duration-200 hover:shadow-md active:translate-y-px active:shadow-inner"
+                className={navbarSignOutDesktopClass}
               />
             </>
           ) : (

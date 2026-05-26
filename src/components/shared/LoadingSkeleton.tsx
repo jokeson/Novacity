@@ -41,7 +41,7 @@ export const LoadingSkeleton = ({
   return (
     <div
       className={cn(
-        "border-border bg-card overflow-hidden rounded-2xl border shadow-sm",
+        "border-border bg-card overflow-hidden rounded-2xl border-2 shadow-none",
         className,
       )}
     >

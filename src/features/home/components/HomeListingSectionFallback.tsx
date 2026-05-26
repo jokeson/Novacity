@@ -19,7 +19,7 @@ export const HomeListingSectionFallback = ({
       aria-busy
     >
       <div className="px-4 md:px-6">
-        <LoadingSkeleton className="border-border bg-card mx-auto h-48 w-full max-w-6xl rounded-2xl border shadow-sm md:h-56" />
+        <LoadingSkeleton className="border-border bg-card mx-auto h-48 w-full max-w-6xl rounded-2xl border-2 shadow-none md:h-56" />
       </div>
     </HomeSectionBandShell>
   );

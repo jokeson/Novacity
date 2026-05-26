@@ -130,7 +130,7 @@ export const UserAvatarUpload = ({
             imageUrl={previewOrSaved}
             imageAlt={displayName}
             size="lg"
-            className="size-28 border-2 border-border shadow-md transition-all duration-300 group-hover:border-gold/50 group-hover:shadow-lg md:size-32"
+            className="size-28 border-2 border-border shadow-none transition-all duration-300 group-hover:border-gold/50 md:size-32"
             fallbackClassName="text-xl font-semibold tracking-tight md:text-2xl"
           />
           <span
