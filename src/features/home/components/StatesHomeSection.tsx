@@ -7,6 +7,7 @@ import { SectionTitle } from "@/components/shared/SectionTitle";
 import { buttonVariants } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
+import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import type { HomepageStateHighlight } from "@/server/queries/propertySearch.queries";
 import { cn } from "@/lib/utils";
 
@@ -30,12 +31,15 @@ export const StatesHomeSection = ({
       aria-labelledby="home-states-heading"
     >
       <Container>
-        <SectionTitle
-          eyebrow="South Sudan"
-          title="Explore by state"
-          description="Discover listings across regions where sellers are active — each card opens properties in that state."
-          headingId="home-states-heading"
-        />
+        <div>
+          <SectionTitle
+            eyebrow="South Sudan"
+            title="Explore by state"
+            description="Discover listings across regions where sellers are active — each card opens properties in that state."
+            headingId="home-states-heading"
+          />
+          <div className={HOME_SECTION_TITLE_ACCENT_CLASS} aria-hidden />
+        </div>
 
         {fetchFailed ? (
           <EmptyState

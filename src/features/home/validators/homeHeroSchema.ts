@@ -12,6 +12,9 @@ export const isAllowedHeroImageUrl = (raw: string): boolean => {
     return false;
   }
   if (value.startsWith("/uploads/")) {
+    if (process.env.VERCEL === "1") {
+      return false;
+    }
     return !value.includes("..");
   }
   try {

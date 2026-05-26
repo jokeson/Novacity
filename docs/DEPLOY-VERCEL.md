@@ -97,6 +97,23 @@ Add the domain in Vercel → Domains, then update `NEXT_PUBLIC_APP_URL` and rede
 
 ## Troubleshooting
 
+### Site loads but no listings / empty homepage sections
+
+The deploy succeeded, but **Vercel is not using your local `.env.local`**. You must copy the same values into **Vercel → Settings → Environment Variables** for **Production** (and Preview if needed), then **Redeploy**.
+
+1. **`MONGODB_URI`** — must match the cluster where your data lives (same URI as local if you want the same listings).
+2. **MongoDB Atlas → Network Access** — allow **`0.0.0.0/0`** (or Vercel egress IPs). Without this, Atlas blocks Vercel and every query fails silently in the UI (empty sections or “couldn’t load…” messages).
+3. Open **Vercel → Deployments → your deployment → Logs** (Runtime / Functions). After a page view, look for `[Novacity] listHomepageRailProperties` errors (e.g. `MONGODB_URI is not defined`, authentication failed, timeout).
+
+### Images missing or broken
+
+Two common causes:
+
+1. **No database** — fix MongoDB first; cards and property pages have nothing to show.
+2. **Images stored as `/uploads/...`** — those files live only on your laptop (`public/uploads/` is not deployed). On Vercel you must use **Cloudinary** (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET` or `CLOUDINARY_URL`) and re-upload listing images, or paste **HTTPS** image URLs when creating listings. Existing MongoDB records that still point at `/uploads/...` will show a placeholder on Vercel until updated.
+
+Hero and listing uploads in the admin/dashboard **require Cloudinary on Vercel** (`VERCEL=1` disables disk upload).
+
 | Issue | Fix |
 |-------|-----|
 | Build fails TypeScript/lint | Run `npm run build` locally and fix errors. |
@@ -104,6 +121,8 @@ Add the domain in Vercel → Domains, then update `NEXT_PUBLIC_APP_URL` and rede
 | Upload API returns Cloudinary message | Set Cloudinary env vars; redeploy. |
 | Wrong links in emails / OG tags | Set `NEXT_PUBLIC_APP_URL` to production URL. |
 | Atlas connection timeout | Allow Vercel IPs / `0.0.0.0/0`; check URI and user password encoding. |
+| Data works locally, empty on Vercel | Env vars not set on Vercel or Atlas blocking Vercel IPs. |
+| Listings exist but images 404 | Replace `/uploads/...` URLs with Cloudinary HTTPS URLs. |
 
 ## Security checklist
 

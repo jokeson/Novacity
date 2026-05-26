@@ -64,7 +64,7 @@ export const PropertyCard = ({
       <div className="relative shrink-0 p-3 pb-0">
         <PropertyImage
           {...image}
-          priority={priorityImage}
+          eagerLoad={priorityImage}
           className="rounded-2xl ring-1 ring-black/5"
         />
         <div className="pointer-events-none absolute left-6 top-6 md:left-8 md:top-8">
@@ -85,7 +85,7 @@ export const PropertyCard = ({
         </h3>
         {locationLabel ? (
           <p
-            className="text-muted-foreground min-w-0 truncate text-[clamp(0.5625rem,3.25cqw,0.6875rem)] leading-4"
+            className="text-foreground min-w-0 truncate text-[clamp(0.75rem,3.5cqw,0.9rem)] leading-5"
             title={locationLabel}
           >
             {locationLabel}
@@ -93,14 +93,14 @@ export const PropertyCard = ({
         ) : null}
         {postedLabel ? (
           <p
-            className="text-muted-foreground min-w-0 truncate text-[clamp(0.5625rem,3.25cqw,0.6875rem)] leading-4"
+            className="text-foreground/80 min-w-0 truncate text-[clamp(0.72rem,3.3cqw,0.85rem)] leading-5"
             title={postedLabel}
           >
             {postedLabel}
           </p>
         ) : null}
         <PropertyMeta {...meta} variant="card" />
-        <div className="flex h-[1.15rem] w-full min-w-0 shrink-0 items-center overflow-hidden">
+        <div className="flex h-[1.45rem] w-full min-w-0 shrink-0 items-center overflow-hidden">
           <PropertyPrice
             amount={price}
             currency={currency}

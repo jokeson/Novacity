@@ -71,9 +71,9 @@ export const PropertyMeta = ({
   return (
     <p
       className={cn(
-        "text-muted-foreground min-w-0",
+        "min-w-0",
         isCard
-          ? "h-[1rem] shrink-0 truncate text-[clamp(0.5625rem,3.5cqw,0.6875rem)] leading-4"
+          ? "text-foreground/90 h-[1.25rem] shrink-0 truncate text-[clamp(0.72rem,3.6cqw,0.9rem)] leading-5"
           : "text-sm leading-relaxed",
         className,
       )}

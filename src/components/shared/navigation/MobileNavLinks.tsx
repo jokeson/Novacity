@@ -39,7 +39,7 @@ export const MobileNavLinks = ({
   const statesPanelClass =
     variant === "sidebar"
       ? mobileSidebarNavStatesPanelClassName
-      : "border-border mt-1 ml-1 max-h-56 space-y-0.5 overflow-y-auto rounded-lg border py-1";
+      : "bg-muted/35 mt-1 ml-1 space-y-0.5 overflow-visible rounded-lg py-1";
 
   const handleNavigate = (): void => {
     onNavigate?.();

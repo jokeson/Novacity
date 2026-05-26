@@ -6,7 +6,6 @@ import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdvancedSearchModal } from "@/features/home/components/AdvancedSearchModal";
 import { SignOutButton } from "@/features/auth/components/SignOutButton";
-import { uiIconInteractive } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
 import { AuthenticatedNavbarActions } from "./AuthenticatedNavbarActions";
@@ -37,11 +36,17 @@ export const NavbarClient = ({
       type="button"
       variant="ghost"
       size="icon"
-      className={cn(uiIconInteractive, "size-9 shrink-0 cursor-pointer")}
+      className={cn(
+        "text-gold hover:text-gold hover:bg-gold/12 focus-visible:text-gold focus-visible:ring-gold/35",
+        "size-9 shrink-0 cursor-pointer transition-all duration-300",
+      )}
       aria-label="Open property search"
       onClick={handleOpenSearch}
     >
-      <Search className="size-5" aria-hidden />
+      <Search
+        className="size-5 drop-shadow-[0_0_8px_rgba(212,160,23,0.45)]"
+        aria-hidden
+      />
     </Button>
   );
 

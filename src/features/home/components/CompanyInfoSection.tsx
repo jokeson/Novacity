@@ -2,6 +2,7 @@ import { Container } from "@/components/shared/Container";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { HOME_CARD_SURFACE_ON_MUTED_SECTION } from "@/features/home/constants/homeCardSurfaces";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
+import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import { cn } from "@/lib/utils";
 
 export const CompanyInfoSection = () => {
@@ -19,13 +20,15 @@ export const CompanyInfoSection = () => {
       className="border-b"
     >
       <Container>
-        <SectionTitle
-          eyebrow="Novacity"
-          title="Company information"
-          description="We obsess over dependable data, humane defaults, and a marketplace that behaves like trusted counsel — fast when you’re decisive, thoughtful when you need space."
-          headingId="company-heading"
-          className="max-w-2xl"
-        />
+        <div className="max-w-2xl">
+          <SectionTitle
+            eyebrow="Novacity"
+            title="Company information"
+            description="We obsess over dependable data, humane defaults, and a marketplace that behaves like trusted counsel — fast when you’re decisive, thoughtful when you need space."
+            headingId="company-heading"
+          />
+          <div className={HOME_SECTION_TITLE_ACCENT_CLASS} aria-hidden />
+        </div>
         <p className="text-muted-foreground mt-8 max-w-3xl text-sm leading-relaxed md:text-base">
           Built for owners, renters, brokers, and companies who expect the same
           polish from software that they demand from bricks and mortar. We never

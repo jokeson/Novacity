@@ -58,10 +58,13 @@ export const Navbar = async () => {
               </div>
               <Link
                 href={ROUTES.home}
-                className="text-primary hover:text-gold focus-visible:ring-ring shrink-0 cursor-pointer rounded-md focus-visible:ring-3 focus-visible:outline-none"
+                className="focus-visible:ring-ring inline-flex shrink-0 cursor-pointer rounded-md focus-visible:ring-3 focus-visible:outline-none"
               >
                 <span className="font-heading text-lg font-semibold tracking-tight md:text-xl">
-                  Novacity
+                  <span className="text-gold drop-shadow-[0_0_10px_rgba(212,160,23,0.55)]">
+                    Nova
+                  </span>
+                  <span className="text-foreground">city</span>
                 </span>
               </Link>
             </div>

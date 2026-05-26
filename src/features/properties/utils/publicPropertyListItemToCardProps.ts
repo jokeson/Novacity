@@ -1,6 +1,7 @@
 import type { PropertyCardProps } from "@/features/properties/components/PropertyCard";
 import { formatListingPostedLabel } from "@/features/properties/utils/formatListingPostedLabel";
 import { formatPublicListingLocation } from "@/features/properties/utils/formatPublicListingLocation";
+import { resolvePublicImageUrl } from "@/lib/resolve-public-image-url";
 import type { PublicPropertyListItem } from "@/server/queries/propertySearch.queries";
 
 /** Shared with catalog / homepage so listing cards stay consistent. */
@@ -15,7 +16,10 @@ export const publicPropertyListItemToCardProps = (
   return {
     title: item.title,
     image: {
-      src: item.images[0] ?? PUBLIC_LISTING_CARD_FALLBACK_IMAGE,
+      src: resolvePublicImageUrl(
+        item.images[0],
+        PUBLIC_LISTING_CARD_FALLBACK_IMAGE,
+      ),
       alt: item.title,
     },
     price: item.price,

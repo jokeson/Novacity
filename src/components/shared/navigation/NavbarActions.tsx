@@ -12,12 +12,18 @@ export type NavbarActionsProps = {
   stacked?: boolean;
   /** Called right before opening the auth dialog (e.g. close mobile sheet). */
   onWillOpenAuth?: () => void;
+  /**
+   * Optional controlled entry point.
+   * When provided, this component will not manage/render `AuthModal` internally.
+   */
+  onRequestAuth?: (view: AuthModalView) => void;
 };
 
 export const NavbarActions = ({
   className,
   stacked = false,
   onWillOpenAuth,
+  onRequestAuth,
 }: NavbarActionsProps) => {
   const sizeCls = stacked ? "default" : "sm";
   const [authOpen, setAuthOpen] = useState(false);
@@ -25,6 +31,10 @@ export const NavbarActions = ({
 
   const handleOpenAuth = (view: AuthModalView): void => {
     onWillOpenAuth?.();
+    if (onRequestAuth) {
+      onRequestAuth(view);
+      return;
+    }
     setAuthInitialView(view);
     setAuthOpen(true);
   };
@@ -57,11 +67,13 @@ export const NavbarActions = ({
           Create account
         </Button>
       </div>
-      <AuthModal
-        open={authOpen}
-        onOpenChange={setAuthOpen}
-        initialView={authInitialView}
-      />
+      {onRequestAuth ? null : (
+        <AuthModal
+          open={authOpen}
+          onOpenChange={setAuthOpen}
+          initialView={authInitialView}
+        />
+      )}
     </>
   );
 };

@@ -10,6 +10,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { propertyDetailPath, ROUTES } from "@/constants/routes";
 import { homeListingCardClassName } from "@/features/home/constants/homeCardSurfaces";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
+import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import type { HomeListingSectionConfig } from "@/features/home/types/homeListing";
 import { PropertyCard } from "@/features/properties/components/PropertyCard";
 import { publicPropertyListItemToCardProps } from "@/features/properties/utils/publicPropertyListItemToCardProps";
@@ -89,7 +90,7 @@ export const HomeListingSection = ({
                 {...cardProps}
                 image={cardImage}
                 priorityImage={index < priorityImageCount}
-                className={listingCardSurfaceClassName}
+                className={cn(listingCardSurfaceClassName, "max-md:bg-background")}
               />
             </Link>
           </li>
@@ -116,12 +117,15 @@ export const HomeListingSection = ({
   return (
     <HomeSectionBandShell tone={tone} aria-labelledby={headingId}>
       <Container>
-        <SectionTitle
-          eyebrow={eyebrow}
-          title={title}
-          description={description}
-          headingId={headingId}
-        />
+        <div>
+          <SectionTitle
+            eyebrow={eyebrow}
+            title={title}
+            description={description}
+            headingId={headingId}
+          />
+          <div className={HOME_SECTION_TITLE_ACCENT_CLASS} aria-hidden />
+        </div>
 
         {fetchFailed ? (
           <EmptyState

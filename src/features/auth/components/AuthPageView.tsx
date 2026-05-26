@@ -39,9 +39,10 @@ export const AuthPageView = ({
         <div className="mb-8 flex flex-col gap-2 text-center">
           <Link
             href={ROUTES.home}
-            className="text-gold hover:text-gold/85 font-heading rounded-2xl text-xl font-semibold tracking-tight transition-all duration-300 focus-visible:ring-ring focus-visible:ring-3 focus-visible:outline-none"
+            className="bg-primary hover:bg-primary/92 inline-flex w-fit self-center rounded-2xl px-4 py-2 text-xl font-semibold tracking-tight transition-all duration-300 focus-visible:ring-3 focus-visible:ring-ring focus-visible:outline-none"
           >
-            Novacity
+            <span className="text-gold drop-shadow-[0_0_12px_rgba(212,160,23,0.6)]">Nova</span>
+            <span className="text-white">city</span>
           </Link>
           <p className={uiTypography.body}>Secure access to the marketplace</p>
         </div>

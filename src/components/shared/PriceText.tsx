@@ -24,14 +24,8 @@ export type PriceTextProps = {
 
 const defaultPriceClassName = uiTypography.propertyPrice;
 
-const cardPriceAmountClassName =
-  "font-heading text-foreground min-w-0 flex-1 truncate font-semibold tracking-tight text-[clamp(0.5rem,5.5cqw,0.8125rem)] leading-none";
-
-const cardPriceSuffixClassName =
-  "text-muted-foreground max-w-[42%] shrink-0 truncate font-medium leading-none text-[clamp(0.4375rem,4cqw,0.6875rem)]";
-
 const cardPriceSingleClassName =
-  "font-heading text-foreground block min-w-0 max-w-full truncate font-semibold tracking-tight text-[clamp(0.5rem,5.5cqw,0.875rem)] leading-none";
+  "font-heading text-foreground block min-w-0 max-w-full truncate font-semibold tracking-tight text-[clamp(0.82rem,5.8cqw,1.1rem)] leading-tight";
 
 const cardPriceRowClassName =
   "flex h-full w-full max-w-full min-w-0 items-center overflow-hidden";
@@ -85,22 +79,14 @@ export const PriceText = ({
       : formatAmount(amount, currency, locale);
 
   if (isCard) {
-    if (showMonthly && formatted.endsWith(LISTING_PRICE_MONTHLY_SUFFIX)) {
-      const base = formatted.slice(0, -LISTING_PRICE_MONTHLY_SUFFIX.length).trimEnd();
-      return (
-        <span
-          className={cn(cardPriceRowClassName, "gap-0.5", className)}
-          title={formatted}
-        >
-          <span className={cardPriceAmountClassName}>{base}</span>
-          <span className={cardPriceSuffixClassName}>/ monthly</span>
-        </span>
-      );
-    }
+    const cardDisplay =
+      showMonthly && formatted.endsWith(LISTING_PRICE_MONTHLY_SUFFIX)
+        ? `${formatted.slice(0, -LISTING_PRICE_MONTHLY_SUFFIX.length).trimEnd()} Monthly`
+        : formatted;
 
     return (
-      <span className={cn(cardPriceRowClassName, className)} title={formatted}>
-        <span className={cardPriceSingleClassName}>{formatted}</span>
+      <span className={cn(cardPriceRowClassName, className)} title={cardDisplay}>
+        <span className={cardPriceSingleClassName}>{cardDisplay}</span>
       </span>
     );
   }

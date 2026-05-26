@@ -28,6 +28,7 @@ export type MutationError = {
 };
 
 export type SignUpMutationSuccess = { ok: true; email: string };
+export type SignInMutationSuccess = { ok: true; redirectTo: string };
 
 const flattenFieldErrors = (error: ZodError): Record<string, string[]> => {
   return error.flatten().fieldErrors as Record<string, string[]>;
@@ -45,7 +46,7 @@ const authRateLimitKey = async (bucket: string): Promise<string> => {
 export const signInMutation = async (
   input: SignInInput,
   callbackRaw?: unknown,
-): Promise<MutationError | { ok: true }> => {
+): Promise<MutationError | SignInMutationSuccess> => {
   const parsed = signInSchema.safeParse(input);
 
   if (!parsed.success) {
@@ -82,7 +83,7 @@ export const signInMutation = async (
     target = ROUTES.dashboard;
   }
 
-  redirect(target);
+  return { ok: true, redirectTo: target };
 };
 
 export const signUpMutation = async (

@@ -287,7 +287,8 @@ export const listHomepageRailProperties = async (
       toListItem(doc as PropertyDoc & { _id: mongoose.Types.ObjectId }),
     );
     return { items, error: null };
-  } catch {
+  } catch (error) {
+    console.error(`[Novacity] listHomepageRailProperties(${rail}) failed:`, error);
     return { items: [], error: homepageRailErrorMessage[rail] };
   }
 };
@@ -388,7 +389,8 @@ export const listHomepageStateHighlights = async (
     });
 
     return { items, error: null };
-  } catch {
+  } catch (error) {
+    console.error("[Novacity] listHomepageStateHighlights failed:", error);
     return {
       items: [],
       error:

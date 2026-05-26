@@ -52,7 +52,7 @@ export const StatesNavDropdown = ({ states, className }: StatesNavDropdownProps)
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="max-h-72 min-w-[12rem] overflow-y-auto"
+        className="max-h-72 min-w-[12rem] overflow-y-auto ring-0 shadow-lg"
       >
         {states.map((label) => (
           <DropdownMenuItem

@@ -61,7 +61,7 @@ export const AuthModal = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="w-[calc(100vw-1.5rem)] max-w-md sm:max-w-md">
         <DialogHeader>
           <DialogTitle>{view === "sign-in" ? "Sign in" : "Create account"}</DialogTitle>
           <DialogDescription>

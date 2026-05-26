@@ -2,6 +2,10 @@
 
 Last Updated: May 25, 2026 (Vercel deployment preparation)
 
+**May 25, 2026 — Homepage visual polish:** Gold navbar search icon with glow; richer multi-stop section gradients and decor overlays on all homepage bands; gold gradient accent under section titles.
+
+**May 25, 2026 — Mobile nav + auth polish:** Fixed mobile guest auth actions so **Sign in** / **Create account** reliably open the auth modal from the sheet, changed sign-in flow to return redirect targets (client navigation, no redirect throw), removed the mobile sidebar left gold vertical stripe, restyled States menus without bordered panels, and updated brand wordmark to glowing **Nova** + white **city** in navbar/mobile/auth views.
+
 **May 25, 2026 — Vercel deployment:** `vercel.json`, `.nvmrc`, `docs/DEPLOY-VERCEL.md`, `npm run verify:deploy`, `getAppBaseUrl()` (`VERCEL_URL` fallback), API `maxDuration` for uploads, updated `.env.example` and README.
 
 **May 24, 2026 — Houses for sale rail:** Homepage section shows **2** most recent `for-sale` listings (sorted by `createdAt`); card thumbnails use fixed assets from `homepageHousesForSale.ts` (not listing upload images); promo image unchanged.

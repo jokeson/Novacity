@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import type { FormEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,6 +13,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ROUTES } from "@/constants/routes";
+import { buildPropertySearchQuery } from "@/features/search/utils/buildPropertySearchQuery";
+import {
+  parsePropertySearchParams,
+  propertySearchParamsSchema,
+} from "@/features/search/validators/propertySearchParams";
 import { cn } from "@/lib/utils";
 
 const inputClasses = cn(
@@ -30,10 +37,34 @@ export const AdvancedSearchModal = ({
   onOpenChange,
   listingStates,
 }: AdvancedSearchModalProps) => {
+  const router = useRouter();
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const raw: Record<string, string> = {};
+
+    for (const [key, value] of data.entries()) {
+      if (typeof value === "string" && value.trim() !== "") {
+        raw[key] = value.trim();
+      }
+    }
+
+    const parsed = parsePropertySearchParams(raw);
+    const params = parsed.success
+      ? parsed.data
+      : propertySearchParamsSchema.parse({});
+
+    onOpenChange(false);
+    router.push(`${ROUTES.properties}${buildPropertySearchQuery(params)}`);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className="max-h-[min(90vh,720px)] overflow-y-auto sm:max-w-lg"
+        className="z-[60] max-h-[min(90vh,720px)] overflow-y-auto sm:max-w-lg"
+        overlayClassName="z-[55] bg-black/50 backdrop-blur-md"
         showCloseButton
       >
         <DialogHeader>
@@ -44,8 +75,7 @@ export const AdvancedSearchModal = ({
           </DialogDescription>
         </DialogHeader>
         <form
-          method="get"
-          action={ROUTES.properties}
+          onSubmit={handleSubmit}
           className="bg-card border-border mt-2 rounded-2xl border p-5 shadow-sm sm:p-6"
         >
           <div className="grid gap-4 sm:grid-cols-2">

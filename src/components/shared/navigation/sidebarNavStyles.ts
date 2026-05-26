@@ -23,7 +23,6 @@ export const sidebarSheetWidthClassName = "w-[min(100vw-2rem,20rem)] sm:max-w-[2
 
 export const sidebarSheetSurfaceClassName = cn(
   "border-border/40 bg-primary text-primary-foreground flex h-full max-h-[100dvh] flex-col gap-0 border-r p-0 shadow-2xl",
-  "before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-1 before:bg-gold/70",
   "[&>button]:top-4 [&>button]:right-4 [&>button]:z-20",
   "[&>button]:border-primary-foreground/25 [&>button]:bg-primary-foreground/8 [&>button]:text-primary-foreground",
   "[&>button]:hover:border-gold/45 [&>button]:hover:bg-primary-foreground/14 [&>button]:hover:text-gold",
@@ -84,7 +83,7 @@ export const mobileSidebarNavSubLinkClassName = cn(
 );
 
 export const mobileSidebarNavStatesPanelClassName = cn(
-  "border-primary-foreground/15 bg-primary-foreground/5 mt-1 max-h-52 space-y-0.5 overflow-y-auto rounded-xl border py-1",
+  "bg-primary-foreground/5 mt-1 space-y-0.5 overflow-visible rounded-xl py-1",
 );
 
 export const mobileSidebarProfileClassName = cn(

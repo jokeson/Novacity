@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Loader2 } from "lucide-react";
 
@@ -31,6 +32,7 @@ export const SignInForm = ({
   defaultEmail = "",
   onSwitchToSignUp,
 }: SignInFormProps) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -45,6 +47,7 @@ export const SignInForm = ({
     const result = await signInMutation(values, callbackUrl);
 
     if (result.ok) {
+      router.replace(result.redirectTo);
       return;
     }
 
