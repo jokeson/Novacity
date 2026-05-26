@@ -8,7 +8,10 @@ import { EmptyState } from "@/components/shared/EmptyState";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import { buttonVariants } from "@/components/ui/button";
 import { propertyDetailPath, ROUTES } from "@/constants/routes";
-import { homeListingCardClassName } from "@/features/home/constants/homeCardSurfaces";
+import {
+  homeListingCardClassName,
+  homeListingCardUsesGoldGradient,
+} from "@/features/home/constants/homeCardSurfaces";
 import { HomeSectionBandShell } from "@/features/home/components/HomeSectionBandShell";
 import { HOME_SECTION_TITLE_ACCENT_CLASS } from "@/features/home/constants/homeSectionBands";
 import type { HomeListingSectionConfig } from "@/features/home/types/homeListing";
@@ -90,7 +93,10 @@ export const HomeListingSection = ({
                 {...cardProps}
                 image={cardImage}
                 priorityImage={index < priorityImageCount}
-                className={cn(listingCardSurfaceClassName, "max-md:bg-background")}
+                className={cn(
+                  listingCardSurfaceClassName,
+                  !homeListingCardUsesGoldGradient(tone) && "max-md:bg-background",
+                )}
               />
             </Link>
           </li>
