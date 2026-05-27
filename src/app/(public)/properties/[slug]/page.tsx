@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { Navbar } from "@/components/shared/navigation/Navbar";
-import { PublicFooter } from "@/features/home/components/PublicFooter";
 import { PropertyDetailsPageView } from "@/features/properties/components/PropertyDetailsPageView";
 import { PropertyListingJsonLd } from "@/features/properties/components/PropertyListingJsonLd";
 import { buildPropertySearchQuery } from "@/features/search/utils/buildPropertySearchQuery";
@@ -12,8 +10,6 @@ import {
 } from "@/features/search/validators/propertySearchParams";
 import { ROUTES } from "@/constants/routes";
 import { getAppBaseUrl } from "@/lib/app-url";
-import { uiPublicMainOffset } from "@/lib/uiContext";
-import { cn } from "@/lib/utils";
 import { getSession } from "@/server/auth/session";
 import { findFavoriteByUserAndProperty } from "@/server/repositories/favorite.repository";
 import { incrementPropertyViewsBySlug } from "@/server/repositories/property.repository";
@@ -146,16 +142,12 @@ export default async function PropertyDetailPage({
           phone: model.phone,
         }}
       />
-      <Navbar />
-      <main className={cn(uiPublicMainOffset)}>
-        <PropertyDetailsPageView
-          property={model}
-          isAuthenticated={Boolean(session)}
-          initialFavorite={initialFavorite}
-          catalogBackHref={catalogBackHref}
-        />
-      </main>
-      <PublicFooter />
+      <PropertyDetailsPageView
+        property={model}
+        isAuthenticated={Boolean(session)}
+        initialFavorite={initialFavorite}
+        catalogBackHref={catalogBackHref}
+      />
     </>
   );
 }

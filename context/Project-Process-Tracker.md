@@ -1,6 +1,10 @@
 # Novacity — Project Tracker
 
-Last Updated: May 26, 2026 (Homepage card borders)
+Last Updated: May 26, 2026 (Mobile/tablet auth + sidebar polish)
+
+**May 26, 2026 — Mobile/tablet auth & sidebar:** `AppMobileSidebarMenu` on dashboard/admin (<md) with nav + **List a property** CTA; auth modal closes on successful sign-in; drawer links close sheet on navigate; desktop sidebar slide uses unified cubic-bezier transition; **List a property** in dashboard sidebar footer.
+
+**May 26, 2026 — Root app shell:** Single `AppShell` in `src/app/layout.tsx` renders one `Navbar`, one `PublicFooter` (public routes only), and auth-aware sidebars (`DashboardSidebar` / `AdminSidebar`) from pathname + session. `src/lib/app-shell.ts` + `x-pathname` header in `proxy.ts`. Removed per-page navbar/footer and deleted `DashboardLayout` / `AdminLayout` wrappers; dashboard banners live in `DashboardPageChrome`.
 
 **May 26, 2026 — Auth modal + navbar CTAs:** `AuthModal` restyled like search modal (navy/gold header, compact forms). Shared `navbarActionStyles` — taller Sign in, Create account, Dashboard, List a property, Sign out on mobile/tablet (`max-lg`).
 

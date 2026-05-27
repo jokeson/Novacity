@@ -84,6 +84,7 @@ export const NavbarActions = ({
           open={authOpen}
           onOpenChange={setAuthOpen}
           initialView={authInitialView}
+          onAuthSuccess={() => setAuthOpen(false)}
         />
       )}
     </>

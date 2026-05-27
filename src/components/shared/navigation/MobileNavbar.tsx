@@ -61,6 +61,7 @@ export const MobileNavbar = ({
         showSignOut={false}
         canCreateListings={canCreateListings}
         tone="on-primary"
+        onNavigate={handleNavigate}
       />
       <SignOutButton
         variant="outline"
@@ -112,6 +113,7 @@ export const MobileNavbar = ({
         open={authOpen}
         onOpenChange={setAuthOpen}
         initialView={authInitialView}
+        onAuthSuccess={() => setAuthOpen(false)}
       />
     </>
   );

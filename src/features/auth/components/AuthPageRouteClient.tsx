@@ -36,6 +36,7 @@ export const AuthPageRouteClient = ({ mode, callbackUrl }: AuthPageRouteClientPr
         onOpenChange={handleOpenChange}
         initialView={mode}
         callbackUrl={callbackUrl}
+        onAuthSuccess={() => setOpen(false)}
       />
     </div>
   );

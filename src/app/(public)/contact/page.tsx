@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/shared/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { PublicFooter } from "@/features/home/components/PublicFooter";
 import { ContactPageView } from "@/features/contact/components/ContactPageView";
-import { Navbar } from "@/components/shared/navigation/Navbar";
 import { uiPageSectionY } from "@/lib/responsiveLayout";
-import { uiPublicMainOffset } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -32,17 +29,13 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
-      <main className={cn(uiPublicMainOffset)}>
-        <PageHeader
-          title="Contact us"
-          description="Share a question, partnership idea, or feedback. We typically respond by email."
-        />
-        <Container className={cn(uiPageSectionY, "min-w-0")}>
-          <ContactPageView />
-        </Container>
-      </main>
-      <PublicFooter />
+      <PageHeader
+        title="Contact us"
+        description="Share a question, partnership idea, or feedback. We typically respond by email."
+      />
+      <Container className={cn(uiPageSectionY, "min-w-0")}>
+        <ContactPageView />
+      </Container>
     </>
   );
 }

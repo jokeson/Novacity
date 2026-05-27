@@ -32,7 +32,7 @@ const heroGoldCtaClassName = cn(
 );
 
 const heroOutlineCtaClassName =
-  "h-11 w-full cursor-pointer rounded-2xl border-white/35 bg-white/10 px-8 text-base text-white shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/20 hover:shadow-md sm:h-12 sm:w-auto";
+  "border-primary/25 bg-card/80 text-primary hover:border-primary/40 hover:bg-card h-11 w-full cursor-pointer rounded-2xl px-8 text-base shadow-sm backdrop-blur-sm transition-all duration-300 hover:shadow-md sm:h-12 sm:w-auto";
 
 export const HeroSection = ({
   content,
@@ -62,11 +62,11 @@ export const HeroSection = ({
         priority
       />
       <div
-        className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/82 to-primary/65"
+        className="absolute inset-0 bg-[linear-gradient(100deg,color-mix(in_srgb,var(--gold)_58%,white)_0%,color-mix(in_srgb,var(--gold)_44%,white)_26%,color-mix(in_srgb,var(--gold)_24%,white)_46%,color-mix(in_srgb,var(--gold)_8%,transparent)_62%,transparent_78%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,160,23,0.22),_transparent_55%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_90%_at_0%_45%,color-mix(in_srgb,var(--gold)_22%,white),transparent_68%)]"
         aria-hidden
       />
 
@@ -83,11 +83,11 @@ export const HeroSection = ({
             </p>
             <h1
               id="hero-heading"
-              className={cn(uiTypography.hero, "text-white")}
+              className={cn(uiTypography.hero, "text-primary")}
             >
               {content.heading}
             </h1>
-            <p className="max-w-2xl text-pretty text-sm leading-relaxed text-white/85">
+            <p className="text-foreground/85 max-w-2xl text-pretty text-sm leading-relaxed">
               {content.body}
             </p>
           </div>
@@ -120,14 +120,14 @@ export const HeroSection = ({
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           aria-label={`${HOME_HERO_BRANDING.companyName} — ${HOME_HERO_BRANDING.slogan}`}
         >
-          <div className="flex max-w-[10.5rem] flex-col items-start gap-0.5 text-left sm:max-w-[13rem] md:max-w-[15rem] lg:max-w-[17rem]">
-            <p className="font-heading text-xs leading-snug font-semibold text-white sm:text-sm">
+          <div className="border-primary/10 bg-card/55 flex max-w-[10.5rem] flex-col items-start gap-0.5 rounded-xl border px-2.5 py-2 text-left shadow-sm backdrop-blur-sm sm:max-w-[13rem] md:max-w-[15rem] lg:max-w-[17rem]">
+            <p className="text-primary font-heading text-xs leading-snug font-semibold sm:text-sm">
               {HOME_HERO_BRANDING.companyName}
             </p>
-            <p className="text-gold/90 text-[9px] font-medium tracking-wide uppercase sm:text-[10px]">
+            <p className="text-gold text-[9px] font-medium tracking-wide uppercase sm:text-[10px]">
               {HOME_HERO_BRANDING.location}
             </p>
-            <p className="text-[10px] leading-snug text-white/75 sm:text-[11px]">
+            <p className="text-muted-foreground text-[10px] leading-snug sm:text-[11px]">
               {HOME_HERO_BRANDING.slogan}
             </p>
           </div>

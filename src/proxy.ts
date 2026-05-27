@@ -15,7 +15,14 @@ const buildRedirect = (req: NextRequest, pathname: string): NextResponse => {
   return NextResponse.redirect(loginUrl);
 };
 
+const withPathnameHeader = (req: NextRequest): Headers => {
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-pathname", req.nextUrl.pathname);
+  return requestHeaders;
+};
+
 export const proxy = async (req: NextRequest): Promise<NextResponse> => {
+  const requestHeaders = withPathnameHeader(req);
   const token = req.cookies.get(SESSION_COOKIE_NAME)?.value;
   const session = token ? await verifySessionToken(token) : null;
 
@@ -28,7 +35,7 @@ export const proxy = async (req: NextRequest): Promise<NextResponse> => {
     if (!session) {
       return buildRedirect(req, pathname);
     }
-    return NextResponse.next();
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   if (isAdmin) {
@@ -40,12 +47,14 @@ export const proxy = async (req: NextRequest): Promise<NextResponse> => {
       return NextResponse.redirect(new URL(ROUTES.dashboard, req.url));
     }
 
-    return NextResponse.next();
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
-  return NextResponse.next();
+  return NextResponse.next({ request: { headers: requestHeaders } });
 };
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/admin/:path*"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)",
+  ],
 };

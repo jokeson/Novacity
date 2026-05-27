@@ -3,6 +3,7 @@
 import type { VariantProps } from "class-variance-authority";
 import { useFormStatus } from "react-dom";
 
+import { setAppSidebarOpenPreference } from "@/components/shared/navigation/CollapsibleAppSidebar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +34,10 @@ const SignOutFormButton = ({
   );
 };
 
+const handleBeforeSignOut = (): void => {
+  setAppSidebarOpenPreference(true);
+};
+
 export const SignOutButton = ({
   className,
   formClassName,
@@ -40,7 +45,7 @@ export const SignOutButton = ({
   size = "default",
 }: SignOutButtonProps) => {
   return (
-    <form action={signOutMutation} className={cn(formClassName)}>
+    <form action={signOutMutation} className={cn(formClassName)} onSubmit={handleBeforeSignOut}>
       <SignOutFormButton variant={variant} size={size} className={className} />
     </form>
   );

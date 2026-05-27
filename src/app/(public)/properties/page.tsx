@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { Container } from "@/components/shared/Container";
-import { PublicFooter } from "@/features/home/components/PublicFooter";
 import { MarketplacePageHeader } from "@/features/search/components/MarketplacePageHeader";
 import { PropertiesCatalogView } from "@/features/search/components/PropertiesCatalogView";
 import { isMarketplaceBrowseAllView } from "@/features/search/utils/isMarketplaceBrowseAllView";
@@ -9,9 +8,7 @@ import {
   parsePropertySearchParams,
   propertySearchParamsSchema,
 } from "@/features/search/validators/propertySearchParams";
-import { Navbar } from "@/components/shared/navigation/Navbar";
 import { uiPageSectionY } from "@/lib/responsiveLayout";
-import { uiPublicMainOffset } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 import type { StateListingGroup } from "@/features/search/utils/groupListingsByState";
 import {
@@ -96,25 +93,21 @@ export default async function PropertiesPage({ searchParams }: PageProps) {
 
   return (
     <>
-      <Navbar />
-      <main className={cn(uiPublicMainOffset)}>
-        <MarketplacePageHeader
-          description={
-            browseAllByState
-              ? "All published properties grouped by state or region. Use search or pick a state in the navbar to filter."
-              : "Browse published properties. Use the search icon in the navbar or a state in the menu to narrow results; links keep your filters in the URL."
-          }
+      <MarketplacePageHeader
+        description={
+          browseAllByState
+            ? "All published properties grouped by state or region. Use search or pick a state in the navbar to filter."
+            : "Browse published properties. Use the search icon in the navbar or a state in the menu to narrow results; links keep your filters in the URL."
+        }
+      />
+      <Container className={cn(uiPageSectionY, "min-w-0")}>
+        <PropertiesCatalogView
+          parsed={params}
+          total={total}
+          items={items}
+          groups={groups}
         />
-        <Container className={cn(uiPageSectionY, "min-w-0")}>
-          <PropertiesCatalogView
-            parsed={params}
-            total={total}
-            items={items}
-            groups={groups}
-          />
-        </Container>
-      </main>
-      <PublicFooter />
+      </Container>
     </>
   );
 }

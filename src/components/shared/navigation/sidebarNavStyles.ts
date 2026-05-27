@@ -14,6 +14,24 @@ export const sidebarAsideDesktopFixedClassName = cn(
   "md:overflow-y-auto md:overscroll-contain",
 );
 
+/** Shared open/close motion for the desktop app sidebar shell. */
+export const sidebarAsideTransitionClassName = cn(
+  "overflow-hidden transition-[width,transform] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]",
+);
+
+/** Collapse control — aligned with notification bell in the sidebar header row. */
+export const sidebarAsideCollapseToggleClassName = cn(
+  "border-primary-foreground/30 bg-primary-foreground/[0.06] text-primary-foreground shadow-none",
+  "hover:border-gold/50 hover:bg-primary-foreground/12 hover:text-gold",
+  "focus-visible:ring-2 focus-visible:ring-gold/55 focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none",
+);
+
+/** Fixed edge control when the desktop sidebar is collapsed. */
+export const sidebarAsideReopenTriggerClassName = cn(
+  "border-primary-foreground/20 bg-primary text-primary-foreground hover:border-gold/45 hover:bg-primary hover:text-gold",
+  "fixed top-[4.75rem] left-0 z-40 h-10 w-10 rounded-r-2xl rounded-l-none border border-l-0 shadow-md md:inline-flex lg:top-[5.25rem]",
+);
+
 export const sidebarTitleLinkClassName = cn(
   "text-primary-foreground hover:text-gold focus-visible:ring-ring font-heading cursor-pointer text-lg font-semibold tracking-tight transition-colors duration-300 focus-visible:ring-2 focus-visible:ring-gold/50 focus-visible:ring-offset-2 focus-visible:ring-offset-primary focus-visible:outline-none",
 );

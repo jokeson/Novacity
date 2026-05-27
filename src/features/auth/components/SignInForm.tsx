@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { Loader2 } from "lucide-react";
 
+import { setAppSidebarOpenPreference } from "@/components/shared/navigation/CollapsibleAppSidebar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -28,6 +29,8 @@ export type SignInFormProps = {
   defaultEmail?: string;
   /** When set (e.g. inside `AuthModal`), switches view instead of navigating to `/sign-up`. */
   onSwitchToSignUp?: () => void;
+  /** Close auth modal after successful sign-in. */
+  onAuthSuccess?: () => void;
   variant?: "page" | "modal";
 };
 
@@ -36,6 +39,7 @@ export const SignInForm = ({
   className,
   defaultEmail = "",
   onSwitchToSignUp,
+  onAuthSuccess,
   variant = "page",
 }: SignInFormProps) => {
   const isModal = variant === "modal";
@@ -54,6 +58,8 @@ export const SignInForm = ({
     const result = await signInMutation(values, callbackUrl);
 
     if (result.ok) {
+      setAppSidebarOpenPreference(true);
+      onAuthSuccess?.();
       router.replace(result.redirectTo);
       return;
     }

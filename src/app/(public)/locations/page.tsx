@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 
 import { Container } from "@/components/shared/Container";
 import { PageHeader } from "@/components/shared/PageHeader";
-import { Navbar } from "@/components/shared/navigation/Navbar";
-import { PublicFooter } from "@/features/home/components/PublicFooter";
 import { LocationsPageView } from "@/features/locations/components/LocationsPageView";
 import { uiPageSectionY } from "@/lib/responsiveLayout";
-import { uiPublicMainOffset } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 import { listJubaPropertyMapPins } from "@/server/queries/locationMap.queries";
 
@@ -40,17 +37,13 @@ export default async function LocationsPage() {
 
   return (
     <>
-      <Navbar />
-      <main className={cn(uiPublicMainOffset)}>
-        <PageHeader
-          title="Locations"
-          description="Discover houses, apartments, commercial space, and more across Juba — hover a pin for price and property type, then click to view the full listing."
-        />
-        <Container className={cn(uiPageSectionY, "min-w-0")}>
-          <LocationsPageView pins={pins} />
-        </Container>
-      </main>
-      <PublicFooter />
+      <PageHeader
+        title="Locations"
+        description="Discover houses, apartments, commercial space, and more across Juba — hover a pin for price and property type, then click to view the full listing."
+      />
+      <Container className={cn(uiPageSectionY, "min-w-0")}>
+        <LocationsPageView pins={pins} />
+      </Container>
     </>
   );
 }

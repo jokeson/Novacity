@@ -25,6 +25,8 @@ export type AuthModalProps = {
   onOpenChange: (open: boolean) => void;
   initialView: AuthModalView;
   callbackUrl?: string;
+  /** Close the dialog after a successful sign-in (mobile/tablet modal flow). */
+  onAuthSuccess?: () => void;
 };
 
 export const AuthModal = ({
@@ -32,6 +34,7 @@ export const AuthModal = ({
   onOpenChange,
   initialView,
   callbackUrl,
+  onAuthSuccess,
 }: AuthModalProps) => {
   const [view, setView] = useState<AuthModalView>(initialView);
   const [bannerMessage, setBannerMessage] = useState<string | null>(null);
@@ -110,6 +113,7 @@ export const AuthModal = ({
               callbackUrl={callbackUrl}
               defaultEmail={prefillEmail}
               onSwitchToSignUp={handleSwitchToSignUp}
+              onAuthSuccess={onAuthSuccess}
               variant="modal"
             />
           ) : (

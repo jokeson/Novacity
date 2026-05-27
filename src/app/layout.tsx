@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { AppShell } from "@/components/shared/AppShell";
 import { getAppBaseUrl } from "@/lib/app-url";
 import { uiAppBody } from "@/lib/responsiveLayout";
 import { cn } from "@/lib/utils";
@@ -47,7 +48,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", inter.variable, "font-sans")}
     >
       <body className={cn(uiAppBody, "font-sans")}>
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
