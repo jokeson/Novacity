@@ -3,7 +3,6 @@ import { DashboardHeader } from "@/features/dashboard/components/DashboardHeader
 import { SettingsPageView } from "@/features/dashboard/components/SettingsPageView";
 import { ROUTES } from "@/constants/routes";
 import { requireVerifiedOwnerForDashboard } from "@/features/verification/services/requireVerifiedOwnerDashboard";
-import { requireSessionForDashboard } from "@/server/auth/session";
 import { getUserByIdLean } from "@/server/queries/user.queries";
 
 export const metadata = {

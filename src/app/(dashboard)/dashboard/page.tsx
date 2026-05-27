@@ -1,6 +1,5 @@
 import { DashboardPageView } from "@/features/dashboard/components/DashboardPageView";
 import { requireVerifiedOwnerForDashboard } from "@/features/verification/services/requireVerifiedOwnerDashboard";
-import { requireSessionForDashboard } from "@/server/auth/session";
 import {
   countUnreadNotificationsForUser,
   getNotificationsForUser,

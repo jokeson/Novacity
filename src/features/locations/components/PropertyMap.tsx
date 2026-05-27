@@ -85,8 +85,12 @@ export const PropertyMap = ({ pins, viewport, className }: PropertyMapProps) => 
 
   const showCardForPinRef = useRef(showCardForPin);
   const scheduleHideCardRef = useRef(scheduleHideCard);
-  showCardForPinRef.current = showCardForPin;
-  scheduleHideCardRef.current = scheduleHideCard;
+
+  // Keep callbacks fresh for Leaflet event listeners without re-registering listeners.
+  useEffect(() => {
+    showCardForPinRef.current = showCardForPin;
+    scheduleHideCardRef.current = scheduleHideCard;
+  }, [showCardForPin, scheduleHideCard]);
 
   useEffect(() => {
     const container = containerRef.current;

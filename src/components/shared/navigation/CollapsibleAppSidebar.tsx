@@ -69,6 +69,7 @@ export const CollapsibleAppSidebar = ({
       setIsOpen(true);
       setAppSidebarOpenPreference(true);
     } else if (stored !== null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(stored);
     }
 

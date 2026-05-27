@@ -13,7 +13,6 @@ import {
   authModalDialogClassName,
   authModalOverlayClassName,
 } from "@/features/auth/constants/authModalStyles";
-import { cn } from "@/lib/utils";
 
 import { SignInForm } from "./SignInForm";
 import { SignUpForm } from "./SignUpForm";

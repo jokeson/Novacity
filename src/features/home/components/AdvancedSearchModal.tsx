@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import type { FormEvent, ReactNode } from "react";
 import { Search } from "lucide-react";
 
-import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

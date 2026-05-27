@@ -31,7 +31,7 @@ export const PropertyDescriptionReadMore = ({
       return;
     }
     setIsTruncatable(el.scrollHeight > el.clientHeight + 1);
-  }, [expanded, isPlaceholder, text]);
+  }, [expanded, isPlaceholder]);
 
   useLayoutEffect(() => {
     measureTruncation();

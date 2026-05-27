@@ -6,7 +6,6 @@ import { PassKeyStatusCard } from "@/features/passkeys/components/PassKeyStatusC
 import { buildPassKeyDashboardState } from "@/features/passkeys/services/buildPassKeyDashboardState";
 import { ROUTES } from "@/constants/routes";
 import { requireVerifiedOwnerForDashboard } from "@/features/verification/services/requireVerifiedOwnerDashboard";
-import { requireSessionForDashboard } from "@/server/auth/session";
 import { listPassKeysForUser } from "@/server/services/passkey.service";
 
 export const metadata = {

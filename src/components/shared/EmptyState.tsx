@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import { LayoutGrid } from "lucide-react";
 
-import { uiSurfaceCardStatic, uiTypography } from "@/lib/uiContext";
+import { uiTypography } from "@/lib/uiContext";
 import { cn } from "@/lib/utils";
 
 export type EmptyStateProps = {
